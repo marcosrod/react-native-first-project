@@ -2,7 +2,7 @@ import * as React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, Image} from 'react-native';
 import {createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem} from '@react-navigation/drawer';
 
-import Home from '../../paginas/home'
+import NovoAmbiente from '../../paginas/novoAmbiente'
 import Ambientes from '../../paginas/ambientes'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -26,8 +26,8 @@ export default function Menu(){
             />
             <Drawer.Screen 
                 name = "Novo Ambiente" 
-                component={Home} 
-                options={{drawerIcon: config => <Icon name="home" size={30} color="#000000"/>, drawerLabelStyle: {color: '#000000', fontSize: 18}} }
+                component={NovoAmbiente} 
+                options={{drawerIcon: config => <Icon name="plus" size={30} color="#000000"/>, drawerLabelStyle: {color: '#000000', fontSize: 18}} }
             />
         </Drawer.Navigator>
     )

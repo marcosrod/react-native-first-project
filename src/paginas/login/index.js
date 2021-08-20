@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Button, StyleSheet, ActivityIndicator, Alert, TextInput } from 'react-native'
+import { View, Text, Button, StyleSheet, ActivityIndicator, Alert, TextInput, TouchableOpacity } from 'react-native'
 import LinhaFormulario from '../../componentes/formatadores/LinhaFormulario'
 import firebase from 'firebase'
 
@@ -21,7 +21,7 @@ class Login extends React.Component {
 
     componentDidMount() {
 
-        if(!firebase.apps.length) {
+        if (!firebase.apps.length) {
             var firebaseConfig = {
                 apiKey: "AIzaSyAz64NlwMqC3xvIT6bg8rt_d4jMmu0s3UM",
                 //apiKey: process.env.FIREBASE_API_KEY,
@@ -31,7 +31,7 @@ class Login extends React.Component {
                 messagingSenderId: "303371356163",
                 appId: "1:303371356163:web:0dd9ec6b7f649acfaca636"
             };
-    
+
             firebase.initializeApp(firebaseConfig);
         }
     }
@@ -51,7 +51,7 @@ class Login extends React.Component {
             .then(usuario => {
 
                 if (usuario) {
-                    this.setState({carregando: false, mensagem: ""})
+                    this.setState({ carregando: false, mensagem: "" })
                     this.props.navigation.navigate('Menu');
                 } else {
 
@@ -90,10 +90,18 @@ class Login extends React.Component {
             return <ActivityIndicator size="large" color="#fff" />
         }
         return (
-            <Button
-                title="Entrar"
-                onPress={() => this.validaLogin()}
-            />
+            <View>
+                <TouchableOpacity
+                    style={estilo.botaoEntrar}
+                    onPress={() => this.validaLogin()}
+                >
+                    <Text style={estilo.textoBotao}>Entrar</Text>
+                </TouchableOpacity>
+            </View>
+            // <Button
+            //     title="Entrar"
+            //     onPress={() => this.validaLogin()}
+            // />
         )
     }
 
@@ -105,34 +113,34 @@ class Login extends React.Component {
 
         return (
             <View>
-                <Text style={style.textoErro}>{mensagem}</Text>
+                <Text style={estilo.textoErro}>{mensagem}</Text>
             </View>
         )
     }
 
     render() {
         return (
-            <View style={style.estiloTela}>
-                <Text style={style.textTitle}>Eventive</Text>
+            <View style={estilo.estiloTela}>
+                <Text style={estilo.textTitle}>Eventive</Text>
                 <LinhaFormulario>
                     <TextInput
-                        style={style.textInput}
-                        placeholder="E-mail: usuario@provedor.com"
-                        placeholderTextColor='white'
+                        style={estilo.textInput}
+                        placeholder="E-mail"
+                        placeholderTextColor='grey'
                         value={this.state.email}
                         onChangeText={valor => {
                             this.setarValor('email', valor);
                         }}
                         keyboardType="email-address"
                         autoCaptalize="none"
-                        
+
                     />
                 </LinhaFormulario>
                 <LinhaFormulario>
                     <TextInput
-                        style={style.textInput}
-                        placeholder="Insira sua senha aqui"
-                        placeholderTextColor='white'
+                        style={estilo.textInput}
+                        placeholder="Senha"
+                        placeholderTextColor='grey'
                         secureTextEntry={true}
                         value={this.state.senha}
                         onChangeText={valor => {
@@ -142,33 +150,43 @@ class Login extends React.Component {
                 </LinhaFormulario>
                 {this.renderizarBotao()}
                 {this.renderizarMensagem()}
-
-                <Button title="Criar Conta" />
+                <View>
+                    <Text style={estilo.textoCriar}>------------------------Ainda não possui conta?------------------------</Text>
+                    <TouchableOpacity
+                        style={estilo.botaoCadastro}
+                        onPress={() => this.validaLogin()}
+                    >
+                        <Text style={estilo.textoBotao}>Criar Conta</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         )
     }
 }
 
-//onPress={() => { props.navigation.navigate('Menu') }}
 
 
-const style = StyleSheet.create({
+const estilo = StyleSheet.create({
     textInput: {
         borderWidth: 1,
         borderColor: 'gray',
         height: 50,
+        width: 320,
         marginTop: 5,
-        color: 'white',
+        color: 'black',
         paddingLeft: 15,
-        paddingRight: 15
+        paddingRight: 15,
+        backgroundColor: 'white',
+        alignSelf: 'center'
     },
     textTitle: {
         fontSize: 40,
         color: '#fff',
         alignSelf: 'center',
         paddingTop: 50,
-        paddingBottom: 150,
-        backgroundColor: '#212529'
+        paddingBottom: 50,
+        backgroundColor: '#212529',
+        fontWeight: 'bold',
     },
     estiloTela: {
         backgroundColor: '#212529',
@@ -178,8 +196,39 @@ const style = StyleSheet.create({
         alignSelf: 'center',
         color: 'red',
         fontSize: 15,
-        marginTop: 5
-    }
+    },
+    botaoEntrar: {
+        alignSelf: 'center',
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius: 5,
+        width: 320,
+        height: 50,
+        padding: 10,
+        marginTop: 30,
+        marginBottom: 65,
+    },
+    botaoCadastro: {
+        alignSelf: 'center',
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius: 5,
+        width: 320,
+        height: 50,
+        padding: 10,
+        marginTop: 20
+    },
+    textoCriar: {
+        fontSize: 17,
+        color: 'white',
+        alignSelf: 'center',
+        marginTop: 90,
+    },
+    textoBotao: {
+        fontSize: 20,
+        color: 'white',
+        alignSelf: 'center',
+    },
 })
 
 export default connect(null, { validaLogin })(Login)

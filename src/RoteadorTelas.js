@@ -20,6 +20,7 @@ import Ambientes from '../src/paginas/ambientes';
 import Menu from '../src/componentes/menu';
 import DetalhesAmbiente from './paginas/detalhesAmbiente';
 import ReservasAtivas from './paginas/reservasAtivas'
+import AlterarAmbiente from './paginas/alterarAmbiente';
 
 const Stack = createStackNavigator()
 
@@ -28,18 +29,12 @@ export default function RoteadorTelas(){
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Menu">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen name="Login" component={Login} options={ {headerShown: false} } />
           <Stack.Screen name="Menu" component={Menu} options={ {headerShown: false} } />
-          <Stack.Screen 
-            name="Detalhes do Ambiente"
-            component={DetalhesAmbiente}    
-            //options={({ route }) => ({ title: route.params.ambiente.nome })}       
-          />
-          <Stack.Screen 
-            name="Reservas Ativas"
-            component={ReservasAtivas}  
-          />
+          <Stack.Screen name="Detalhes do Ambiente" component={DetalhesAmbiente} />
+          <Stack.Screen name="Reservas Ativas"component={ReservasAtivas} />
+          <Stack.Screen name="Alterar Ambiente"component={AlterarAmbiente} />
         </Stack.Navigator>
       </NavigationContainer>
    </>

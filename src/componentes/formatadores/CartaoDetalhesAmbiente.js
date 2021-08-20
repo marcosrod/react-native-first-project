@@ -29,7 +29,6 @@ const estilos = StyleSheet.create({
     alignItems: "center",
     width: '100%',
     height: '60%',
-    backgroundColor: 'red'
   },
   cartao: {
     backgroundColor: "#FFF",
@@ -48,6 +47,7 @@ const estilos = StyleSheet.create({
   descricao: {
     fontSize: 20,
     width: '95%',
+    height:'38%',
     borderColor: 'black',
     borderWidth: 2,
     borderRadius: 5,
@@ -57,7 +57,7 @@ const estilos = StyleSheet.create({
   },
   lotacao: {
     fontSize: 20,
-    marginTop: '10%',
+    marginTop: '5%',
     width: '95%',
     borderColor: 'black',
     borderWidth: 2,

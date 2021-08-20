@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, Image, Pressable } from 'react-native';
+import { View, Text, Button, StyleSheet, Image, Pressable, Alert } from 'react-native';
 import CartaoDetalhesAmbiente from '../../componentes/formatadores/CartaoDetalhesAmbiente';
 
 export default function DetalhesAmbiente(props) {
@@ -11,15 +11,17 @@ export default function DetalhesAmbiente(props) {
                 <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas')}>
                     <Text style={estilos.texto} >Visualizar Reservas</Text>
                 </Pressable>
-                <Pressable style={estilos.botao}>
+                <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Alterar Ambiente')}>
                     <Text style={estilos.texto}>Alterar Ambiente</Text>
                 </Pressable>
-                <Pressable style={estilos.botao}>
+                <Pressable 
+                    style={estilos.botao} 
+                    onPress={() => Alert.alert('Confirmar Exclusão de Ambiente?', 'Esta ação não pode ser desfeita!', 
+                    [{text: 'Sim', onPress: () => {}}, 
+                    {text: 'Não', onPress: () => {}}])}>
                     <Text style={estilos.texto}>Deletar Ambiente</Text>
                 </Pressable>
             </View>
-
-
         </View>
     )
 }
