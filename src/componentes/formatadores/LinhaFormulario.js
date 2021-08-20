@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
         padding: 5,
         marginTop: 5,
         marginBottom: 5,
-        elevation: 1,
         backgroundColor: '#212529',
         
     }

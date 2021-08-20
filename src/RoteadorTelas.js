@@ -21,6 +21,8 @@ import Menu from '../src/componentes/menu';
 import DetalhesAmbiente from './paginas/detalhesAmbiente';
 import ReservasAtivas from './paginas/reservasAtivas'
 import AlterarAmbiente from './paginas/alterarAmbiente';
+import NovaConta from './paginas/novaConta'
+import { HeaderBackground } from 'react-navigation-stack';
 
 const Stack = createStackNavigator()
 
@@ -29,12 +31,13 @@ export default function RoteadorTelas(){
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="Menu">
           <Stack.Screen name="Login" component={Login} options={ {headerShown: false} } />
           <Stack.Screen name="Menu" component={Menu} options={ {headerShown: false} } />
-          <Stack.Screen name="Detalhes do Ambiente" component={DetalhesAmbiente} />
-          <Stack.Screen name="Reservas Ativas"component={ReservasAtivas} />
-          <Stack.Screen name="Alterar Ambiente"component={AlterarAmbiente} />
+          <Stack.Screen name="Detalhes do Ambiente" component={DetalhesAmbiente} options={ {headerStyle:{backgroundColor: '#212529'}, headerTintColor: 'white', headerTitleAlign: 'center'}}/>
+          <Stack.Screen name="Reservas Ativas"component={ReservasAtivas} options={ {headerStyle:{backgroundColor: '#212529'}, headerTintColor: 'white', headerTitleAlign: 'center'}}/>
+          <Stack.Screen name="Alterar Ambiente"component={AlterarAmbiente} options={ {headerStyle:{backgroundColor: '#212529'}, headerTintColor: 'white', headerTitleAlign: 'center'}}/>
+          <Stack.Screen name="Nova Conta"component={NovaConta} options={ {headerShown: false} } />
         </Stack.Navigator>
       </NavigationContainer>
    </>

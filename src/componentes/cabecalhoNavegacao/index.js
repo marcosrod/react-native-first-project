@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 Icon.loadFont();
 
-export default function headerDrawNav({title, navigation}) {
+export default function cabecalhoNavegacao({title, navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.containerButton}>
@@ -23,23 +23,29 @@ export default function headerDrawNav({title, navigation}) {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: '7%',
+        backgroundColor: '#212529'
     },
     button: {
         backgroundColor: '#F8F9FA'
     },
     text: {
-        color: '#000000',
+        color: 'white',
         padding: 5,
-        fontSize: 23, 
+        fontSize: 23,
+        fontWeight: 'bold',
+        textAlign: 'center'
+
     },
     containerTitle: {
-        backgroundColor: '#F8F9FA',
-        width: '100%'
+        backgroundColor: '#212529',
+        width: '80%',
+
     },
     containerButton: {
         justifyContent: 'center',
-        backgroundColor: '#F8F9FA',
+        backgroundColor: '#212529',
         paddingHorizontal: 10
     }
 })

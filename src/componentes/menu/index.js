@@ -16,7 +16,7 @@ export default function Menu(){
         <Drawer.Navigator 
             initialRouteName = "Ambientes"
             drawerStyle={styles.drawerStyle}
-            screenOptions={{labelStyle: {"color": "#000000", fontSize: 18}}}
+            screenOptions={{headerShown: false}}
             drawerContent={props => <CustomDrawerContent {...props} />}
         >
             <Drawer.Screen 

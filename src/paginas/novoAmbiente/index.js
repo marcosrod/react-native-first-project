@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import CabecalhoNavegacao from '../../componentes/cabecalhoNavegacao';
 
 
 const NovoAmbiente = props => (
-    <View>
+    <View style={estilo.tela}>
+        <CabecalhoNavegacao title={"Novo Ambiente"} navigation={props.navigation}/>
         <View style={estilo.imagem}></View>
         <TouchableOpacity style={estilo.botaoFoto}><Text style={estilo.textoBotao}>Carregar Foto</Text></TouchableOpacity>
         <View style={estilo.conteiner}>
@@ -17,6 +19,9 @@ const NovoAmbiente = props => (
 
 
 const estilo = StyleSheet.create({
+    tela: {
+        height: '100%'
+    },
     texto: {
         borderWidth: 1,
         borderColor: 'black',

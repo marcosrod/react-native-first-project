@@ -24,7 +24,6 @@ class Login extends React.Component {
         if (!firebase.apps.length) {
             var firebaseConfig = {
                 apiKey: "AIzaSyAz64NlwMqC3xvIT6bg8rt_d4jMmu0s3UM",
-                //apiKey: process.env.FIREBASE_API_KEY,
                 authDomain: "eventive-661ff.firebaseapp.com",
                 projectId: "eventive-661ff",
                 storageBucket: "eventive-661ff.appspot.com",
@@ -98,10 +97,6 @@ class Login extends React.Component {
                     <Text style={estilo.textoBotao}>Entrar</Text>
                 </TouchableOpacity>
             </View>
-            // <Button
-            //     title="Entrar"
-            //     onPress={() => this.validaLogin()}
-            // />
         )
     }
 
@@ -121,7 +116,7 @@ class Login extends React.Component {
     render() {
         return (
             <View style={estilo.estiloTela}>
-                <Text style={estilo.textTitle}>Eventive</Text>
+                <Text style={estilo.textoTitulo}>Eventive</Text>
                 <LinhaFormulario>
                     <TextInput
                         style={estilo.textInput}
@@ -154,7 +149,7 @@ class Login extends React.Component {
                     <Text style={estilo.textoCriar}>------------------------Ainda não possui conta?------------------------</Text>
                     <TouchableOpacity
                         style={estilo.botaoCadastro}
-                        onPress={() => this.validaLogin()}
+                        onPress={() => this.props.navigation.navigate('Nova Conta')}
                     >
                         <Text style={estilo.textoBotao}>Criar Conta</Text>
                     </TouchableOpacity>
@@ -179,7 +174,7 @@ const estilo = StyleSheet.create({
         backgroundColor: 'white',
         alignSelf: 'center'
     },
-    textTitle: {
+    textoTitulo: {
         fontSize: 40,
         color: '#fff',
         alignSelf: 'center',
