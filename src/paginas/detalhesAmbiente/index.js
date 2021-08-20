@@ -8,8 +8,8 @@ export default function DetalhesAmbiente(props) {
         <View style={estilos.conteiner}>
             <CartaoDetalhesAmbiente ambiente={ambiente} />
             <View style={estilos.conteinerBotao}>
-                <Pressable style={estilos.botao}>
-                    <Text style={estilos.texto}>Visualizar Reservas</Text>
+                <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas')}>
+                    <Text style={estilos.texto} >Visualizar Reservas</Text>
                 </Pressable>
                 <Pressable style={estilos.botao}>
                     <Text style={estilos.texto}>Alterar Ambiente</Text>

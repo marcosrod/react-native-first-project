@@ -19,7 +19,7 @@ import Login from '../src/paginas/login';
 import Ambientes from '../src/paginas/ambientes';
 import Menu from '../src/componentes/menu';
 import DetalhesAmbiente from './paginas/detalhesAmbiente';
-import { ScreenStackHeaderCenterView } from 'react-native-screens';
+import ReservasAtivas from './paginas/reservasAtivas'
 
 const Stack = createStackNavigator()
 
@@ -35,7 +35,11 @@ export default function RoteadorTelas(){
             name="Detalhes do Ambiente"
             component={DetalhesAmbiente}    
             //options={({ route }) => ({ title: route.params.ambiente.nome })}       
-        />
+          />
+          <Stack.Screen 
+            name="Reservas Ativas"
+            component={ReservasAtivas}  
+          />
         </Stack.Navigator>
       </NavigationContainer>
    </>
