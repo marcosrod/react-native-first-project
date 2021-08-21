@@ -1,18 +1,28 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import CabecalhoNavegacao from '../../componentes/cabecalhoNavegacao';
+import { setarCampoAmbiente, salvarAmbiente } from '../../acoes/acoesAmbienteCadastro'
+import { connect } from 'react-redux';
 
 
-const NovoAmbiente = props => (
+const NovoAmbiente = ({ ambienteCad, setarCampoAmbiente, salvarAmbiente, navigation}) => (
+
     <View style={estilo.tela}>
-        <CabecalhoNavegacao title={"Novo Ambiente"} navigation={props.navigation}/>
+        <CabecalhoNavegacao title={"Novo Ambiente"} navigation={navigation} />
         <View style={estilo.imagem}></View>
-        <TouchableOpacity style={estilo.botaoFoto}><Text style={estilo.textoBotao}>Carregar Foto</Text></TouchableOpacity>
+        <TouchableOpacity style={estilo.botaoFoto}><TextInput style={estilo.textoBotaoFoto} placeholder={"Carregar Foto"} value={ambienteCad.foto} onChangeText={valor => setarCampoAmbiente('foto', valor)}></TextInput></TouchableOpacity>
         <View style={estilo.conteiner}>
-            <TextInput style={estilo.texto} placeholder="Nome do Ambiente" ></TextInput>
-            <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente"></TextInput>
-            <TextInput style={estilo.descricao} placeholder="Descrição do Ambiente" ></TextInput>
-            <TouchableOpacity style={estilo.botao}><Text style={estilo.textoBotao}>Confirmar Cadastro</Text></TouchableOpacity>
+            <TextInput style={estilo.texto} placeholder="Nome do Ambiente" value={ambienteCad.nome} onChangeText={valor => setarCampoAmbiente('nome', valor)} ></TextInput>
+            <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente" value={ambienteCad.lotacaoMaxima} onChangeText={valor => setarCampoAmbiente('lotacaoMaxima', valor)}></TextInput>
+            <TextInput style={estilo.descricao} placeholder="Descrição do Ambiente" value={ambienteCad.descricao} onChangeText={valor => setarCampoAmbiente('descricao', valor)} ></TextInput>
+            <TouchableOpacity
+                style={estilo.botao}
+                onPress={async () => {
+                    await salvarAmbiente(ambienteCad)
+                    navigation.goBack()
+                }}>
+                <Text style={estilo.textoBotao} >Confirmar Cadastro</Text>
+            </TouchableOpacity>
         </View>
     </View>
 )
@@ -42,7 +52,7 @@ const estilo = StyleSheet.create({
         margin: 10,
         backgroundColor: '#E5E5E5',
         height: 141,
-        marginBottom: 60
+        marginBottom: 60,
     },
     botao: {
         backgroundColor: '#E5E5E5',
@@ -55,6 +65,11 @@ const estilo = StyleSheet.create({
     },
     textoBotao: {
         fontSize: 20,
+        color: 'black',
+        alignSelf: 'center'
+    },
+    textoBotaoFoto: {
+        fontSize: 15,
         color: 'black',
         alignSelf: 'center'
     },
@@ -72,11 +87,24 @@ const estilo = StyleSheet.create({
         borderWidth: 0.9,
         borderColor: 'black',
         borderRadius: 5,
-        width: 170,
-        padding: 6,
+        width: 150,
+        height: 40,
+        padding: 0,
         marginTop: 3,
     }
 
 })
 
-export default NovoAmbiente;
+const mapStateToProps = (estado) => {
+    return ({
+        ambienteCad: estado.ambienteCad
+    })
+
+}
+
+const mapDispatchToProps = {
+    setarCampoAmbiente,
+    salvarAmbiente
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NovoAmbiente);

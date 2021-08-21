@@ -24,7 +24,7 @@ export default function cabecalhoNavegacao({title, navigation}) {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        height: '7%',
+        height: 45,
         backgroundColor: '#212529'
     },
     button: {

@@ -24,7 +24,7 @@ export const salvarUsuario = usuario => {
     return async dispatch => {
         await firebase
             .database()
-            .ref(`/users/${currentUser.uid}`)
+            .ref(`/usuarios/${currentUser.uid}`)
             .push(usuario)
 
         dispatch(cadastroSucesso());

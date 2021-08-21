@@ -43,7 +43,6 @@ const CriarConta = ({ usuarioCad, setarCampo, salvarUsuario, navigation, validaC
                         style={estilo.botao}
                         onPress={async () => {
                             await validaCad(usuarioCad)
-                            //await salvarUsuario(usuarioCad)
                         }}>
                         <Text style={estilo.textoBotao} >Confirmar Cadastro</Text>
                     </TouchableOpacity>
