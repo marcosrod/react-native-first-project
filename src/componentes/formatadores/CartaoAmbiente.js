@@ -10,7 +10,7 @@ const CartaoAmbiente = ({ ambiente, navegando }) => (
     <Image
         style={estilos.imagem_perfil}
         source={{
-          uri: ambiente.imagem,
+          uri: ambiente.foto,
         }}
       />
       <Text style={estilos.titulo}>{ `${ambiente.nome}`  }</Text>

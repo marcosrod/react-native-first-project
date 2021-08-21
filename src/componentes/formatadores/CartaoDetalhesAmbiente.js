@@ -13,11 +13,11 @@ const CartaoDetalhesAmbiente = ({ ambiente}) => (
     <Image
         style={estilos.imagem_perfil}
         source={{
-          uri: ambiente.imagem,
+          uri: ambiente.foto,
         }}
       />
-      <Text style={estilos.descricao}>Descrição</Text>
-      <Text style={estilos.lotacao}>Lotação Máxima</Text>
+      <Text style={estilos.descricao}>{ambiente.descricao}</Text>
+      <Text style={estilos.lotacao}>{ambiente.lotacaoMaxima}</Text>
     </View>
   </View>
 
