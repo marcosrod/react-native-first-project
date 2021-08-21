@@ -1,1 +1,2 @@
-export * from './acoesUsuario'
+export * from './acoesUsuario';
+export * from './acoesUsuarioCadastro';

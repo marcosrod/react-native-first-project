@@ -1,32 +1,53 @@
 import firebase from 'firebase';
 import {Alert} from 'react-native';
 
-export const USUARIO_ENTRADA_SUCESSO = 'USUARIO_ENTRADA';
-const usuarioEntradaSucesso = usuario => ({
-    type: USUARIO_ENTRADA_SUCESSO,
-    usuario
-})
+export const SETAR_CAMPO = 'SETAR_CAMPO';
 
-export const USUARIO_SAIDA = 'USUARIO_SAIDA';
-const usuarioSaida = () => ({
-    type: USUARIO_SAIDA,
-})
+export const setarCampo = (campo, valor) => {
+    return {
+        type: SETAR_CAMPO,
+        campo,
+        valor
+    }
+}
 
-export const validaLogin = ({ email, senha }) => dispatch => {
+export const CADASTRO_SUCESSO = 'CADASTRO_SUCESSO';
+export const cadastroSucesso = () => {
+    return {
+        type: CADASTRO_SUCESSO
+    }
+}
+
+export const salvarUsuario = usuario => {
+    const { currentUser } = firebase.auth();
+
+    return async dispatch => {
+        await firebase
+            .database()
+            .ref(`/users/${currentUser.uid}`)
+            .push(usuario)
+
+        dispatch(cadastroSucesso());
+    }
+
+}
+
+export const validaCadastro = ({ email, senha }) => dispatch => {
+
     return firebase
         .auth()
-        .signInWithEmailAndPassword(email, senha)
+        .createUserWithEmailAndPassword(email, senha)
         .then(usuario => {
-            const acao = usuarioEntradaSucesso(usuario);
+            const acao = cadastroSucesso(usuario);
             dispatch(acao)
             return usuario;
         })
         .catch(erro => {
-            if (erro.code == "auth/user-not-found") {
+            if (erro) {
                 return new Promise((resolve, reject) => {
                     Alert.alert(
-                        'O usuário não foi encontrado.',
-                        'Tente novamente ou crie um novo usuário!',
+                        'Não foi possível criar o usuário',
+                        'Tente novamente mais tarde!',
                         [{
                             text: 'Tentar Novamente',
                             onPress: () => {

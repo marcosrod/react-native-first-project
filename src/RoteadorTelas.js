@@ -31,7 +31,7 @@ export default function RoteadorTelas(){
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Menu">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen name="Login" component={Login} options={ {headerShown: false} } />
           <Stack.Screen name="Menu" component={Menu} options={ {headerShown: false} } />
           <Stack.Screen name="Detalhes do Ambiente" component={DetalhesAmbiente} options={ {headerStyle:{backgroundColor: '#212529'}, headerTintColor: 'white', headerTitleAlign: 'center'}}/>

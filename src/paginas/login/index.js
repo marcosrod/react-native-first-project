@@ -20,9 +20,15 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-
+        
         if (!firebase.apps.length) {
             var firebaseConfig = {
+                // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+                // authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+                // projectId: process.env.REACT_APP_PROJECT_ID,
+                // storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+                // messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+                // appId: process.env.REACT_APP_APP_ID
                 apiKey: "AIzaSyAz64NlwMqC3xvIT6bg8rt_d4jMmu0s3UM",
                 authDomain: "eventive-661ff.firebaseapp.com",
                 projectId: "eventive-661ff",
@@ -30,7 +36,6 @@ class Login extends React.Component {
                 messagingSenderId: "303371356163",
                 appId: "1:303371356163:web:0dd9ec6b7f649acfaca636"
             };
-
             firebase.initializeApp(firebaseConfig);
         }
     }
@@ -83,7 +88,6 @@ class Login extends React.Component {
                 return "Erro ao fazer login!"
         }
     }
-
     renderizarBotao() {
         if (this.state.carregando) {
             return <ActivityIndicator size="large" color="#fff" />
