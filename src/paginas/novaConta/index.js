@@ -14,10 +14,13 @@ const CriarConta = ({ usuarioCad, setarCampo, salvarUsuario, navigation, validaC
         
         validaCadastro({ email, senha })
             .then(usuario => {
-    
-                if (usuario) {
+                const { currentUser } = firebase.auth();
+                if (currentUser.uid === "Usn4PdszpTb98HMKX36VZmYAWVb2"){
                     salvarUsuario(usuarioCad)
                     navigation.navigate('Menu');
+                }else{
+                    salvarUsuario(usuarioCad)
+                    navigation.navigate('MenuMorador');
                 }
             })
     

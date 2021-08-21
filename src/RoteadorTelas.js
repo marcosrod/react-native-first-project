@@ -22,6 +22,7 @@ import DetalhesAmbiente from './paginas/detalhesAmbiente';
 import ReservasAtivas from './paginas/reservasAtivas'
 import AlterarAmbiente from './paginas/alterarAmbiente';
 import NovaConta from './paginas/novaConta'
+import MenuMorador from './componentes/menuMorador';
 import { HeaderBackground } from 'react-navigation-stack';
 
 const Stack = createStackNavigator()
@@ -38,6 +39,7 @@ export default function RoteadorTelas(){
           <Stack.Screen name="Reservas Ativas"component={ReservasAtivas} options={ {headerStyle:{backgroundColor: '#212529'}, headerTintColor: 'white', headerTitleAlign: 'center'}}/>
           <Stack.Screen name="Alterar Ambiente"component={AlterarAmbiente} options={ {headerStyle:{backgroundColor: '#212529'}, headerTintColor: 'white', headerTitleAlign: 'center'}}/>
           <Stack.Screen name="Nova Conta"component={NovaConta} options={ {headerShown: false} } />
+          <Stack.Screen name="MenuMorador" component={MenuMorador} options={ {headerShown: false} } />
         </Stack.Navigator>
       </NavigationContainer>
    </>

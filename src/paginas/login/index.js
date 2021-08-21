@@ -48,16 +48,20 @@ class Login extends React.Component {
 
 
     validaLogin() {
+        
         this.setState({ carregando: true });
         const { email, senha } = this.state;
 
         this.props.validaLogin({ email, senha })
             .then(usuario => {
-
-                if (usuario) {
+                const { currentUser } = firebase.auth();
+                if (currentUser.uid === "Usn4PdszpTb98HMKX36VZmYAWVb2") {
                     this.setState({ carregando: false, mensagem: "" })
                     this.props.navigation.navigate('Menu');
-                } else {
+                } else if(usuario){
+                    this.setState({ carregando: false, mensagem: "" })
+                    this.props.navigation.navigate('MenuMorador');
+                }else {
 
                     this.setState({
                         carregando: false,
