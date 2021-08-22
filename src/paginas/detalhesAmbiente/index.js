@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Image, Pressable, Alert } from 'react-native';
 import CartaoDetalhesAmbiente from '../../componentes/formatadores/CartaoDetalhesAmbiente';
-import { setarCamposAmbiente } from '../../acoes';
+import { setarCamposAmbiente, setarAviso } from '../../acoes';
 import { connect } from 'react-redux';
+import AvisoExcluir from '../../componentes/formatadores/avisoExcluir';
 
 function DetalhesAmbiente(props) {
     
@@ -11,9 +12,10 @@ function DetalhesAmbiente(props) {
     useEffect(() => {
         props.setarCamposAmbiente(ambiente)
     },[])
-
+    
     return (
         <View style={estilos.conteiner}>
+            <AvisoExcluir aviso={props.aviso} setarAviso={props.setarAviso}/>
             <CartaoDetalhesAmbiente ambiente={props.ambienteDetalhes} />
             <View style={estilos.conteinerBotao}>
                 <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas')}>
@@ -25,16 +27,19 @@ function DetalhesAmbiente(props) {
                     <Text style={estilos.texto}>Alterar Ambiente</Text>
                 </Pressable>
                 <Pressable 
-                    style={estilos.botao} 
-                    onPress={() => Alert.alert('Confirmar Exclusão de Ambiente?', 'Esta ação não pode ser desfeita!', 
-                    [{text: 'Sim', onPress: () => {}}, 
-                    {text: 'Não', onPress: () => {}}])}>
-                    <Text style={estilos.texto}>Deletar Ambiente</Text>
+                    style={estilos.botao}
+                    onPress={() => props.setarAviso(true)}
+                ><Text style={estilos.texto}>Deletar Ambiente</Text>
                 </Pressable>
             </View>
         </View>
     )
 }
+
+
+// onPress={() => Alert.alert('Confirmar Exclusão de Ambiente?', 'Esta ação não pode ser desfeita!', 
+//                     [{text: 'Sim', onPress: () => {}}, 
+//                     {text: 'Não', onPress: () => {}}])}>
 
 const estilos = StyleSheet.create({
     conteiner: {
@@ -76,13 +81,15 @@ const estilos = StyleSheet.create({
 
 const mapStateToProps = (estado) => {
     return ({
-        ambienteDetalhes: estado.ambienteAlt
+        ambienteDetalhes: estado.ambienteAlt,
+        aviso: estado.avisoExcluir,
     })
 
 }
 
 const mapDispatchToProps = {
-    setarCamposAmbiente
+    setarCamposAmbiente,
+    setarAviso
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetalhesAmbiente);

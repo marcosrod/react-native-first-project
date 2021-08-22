@@ -4,6 +4,7 @@ import usuarioCadastroReducer from "./usuarioCadastroReducer";
 import ambienteCadastroReducer from './ambienteCadastroReducer'
 import ambienteListarReducer from "./ambienteListarReducer";
 import ambienteAlteracaoReducer from './ambienteAlteracaoReducer'
+import avisoExcluirReducer from "./avisoExcluirReducer";
 
 
 
@@ -13,5 +14,6 @@ export default combineReducers({
     ambienteCad: ambienteCadastroReducer,
     ambientesLista: ambienteListarReducer,
     ambienteAlt: ambienteAlteracaoReducer,
+    avisoExcluir: avisoExcluirReducer,
 });
 
