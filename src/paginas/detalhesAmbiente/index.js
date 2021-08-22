@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Image, Pressable, Alert } from 'react-native';
 import CartaoDetalhesAmbiente from '../../componentes/formatadores/CartaoDetalhesAmbiente';
+import { setarCamposAmbiente } from '../../acoes';
+import { connect } from 'react-redux';
 
-export default function DetalhesAmbiente(props) {
+function DetalhesAmbiente(props) {
+    
     const { ambiente } = props.route.params;
+
+    useEffect(() => {
+        props.setarCamposAmbiente(ambiente)
+    },[])
+
     return (
         <View style={estilos.conteiner}>
-            <CartaoDetalhesAmbiente ambiente={ambiente} />
+            <CartaoDetalhesAmbiente ambiente={props.ambienteDetalhes} />
             <View style={estilos.conteinerBotao}>
                 <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas')}>
                     <Text style={estilos.texto} >Visualizar Reservas</Text>
                 </Pressable>
-                <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Alterar Ambiente')}>
+                <Pressable style={estilos.botao} onPress={() => {
+                    props.navigation.navigate('Alterar Ambiente')
+                    }}>
                     <Text style={estilos.texto}>Alterar Ambiente</Text>
                 </Pressable>
                 <Pressable 
@@ -64,4 +74,15 @@ const estilos = StyleSheet.create({
 
 })
 
+const mapStateToProps = (estado) => {
+    return ({
+        ambienteDetalhes: estado.ambienteAlt
+    })
 
+}
+
+const mapDispatchToProps = {
+    setarCamposAmbiente
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetalhesAmbiente);

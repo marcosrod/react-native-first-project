@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 Icon.loadFont();
 
-const CartaoDetalhesAmbiente = ({ ambiente}) => (
+const CartaoDetalhesAmbiente = ({ ambiente }) => (
   <View 
     style={estilos.conteiner}
   >

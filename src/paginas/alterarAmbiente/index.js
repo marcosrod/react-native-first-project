@@ -1,19 +1,33 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { setarCampoAmbienteAlt, alterarAmbiente } from '../../acoes/acoesAmbienteAlterar'
+import { connect } from 'react-redux';
 
 
-const AlterarAmbiente = props => (
-    <View>
-        <View style={estilo.imagem}></View>
-        <TouchableOpacity style={estilo.botaoFoto}><Text style={estilo.textoBotao}>Carregar Foto</Text></TouchableOpacity>
-        <View style={estilo.conteiner}>
-            <TextInput style={estilo.texto} placeholder="Nome do Ambiente" ></TextInput>
-            <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente"></TextInput>
-            <TextInput style={estilo.descricao} placeholder="Descrição do Ambiente" ></TextInput>
-            <TouchableOpacity style={estilo.botao}><Text style={estilo.textoBotao}>Confirmar Alteração</Text></TouchableOpacity>
+const AlterarAmbiente = ({ ambiente, setarCampoAmbienteAlt, alterarAmbiente, navigation }) => {
+
+    return (
+        <View>
+            <View style={estilo.imagem}></View>
+            <TextInput style={estilo.botaoFoto} value={ambiente.foto} onChangeText={valor => setarCampoAmbienteAlt('foto', valor)} ></TextInput>
+            <View style={estilo.conteiner}>
+                <TextInput style={estilo.texto} placeholder="Nome do Ambiente" value={ambiente.nome} onChangeText={valor => setarCampoAmbienteAlt('nome', valor)} ></TextInput>
+                <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente" value={ambiente.lotacaoMaxima} onChangeText={valor => setarCampoAmbienteAlt('lotacaoMaxima', valor)} ></TextInput>
+                <TextInput style={estilo.descricao} placeholder="Descrição do Ambiente" value={ambiente.descricao} onChangeText={valor => setarCampoAmbienteAlt('descricao', valor)} ></TextInput>
+                <TouchableOpacity
+                    style={estilo.botao}
+                    onPress={async () => {
+                        alterarAmbiente(ambiente)
+                        navigation.goBack()
+                    }}
+                    >
+                    <Text style={estilo.textoBotao}>Confirmar Alteração</Text></TouchableOpacity>
+            </View>
         </View>
-    </View>
-)
+    )
+
+
+}
 
 
 const estilo = StyleSheet.create({
@@ -77,4 +91,16 @@ const estilo = StyleSheet.create({
 
 })
 
-export default AlterarAmbiente;
+const mapStateToProps = (estado) => {
+    return ({
+        ambiente: estado.ambienteAlt
+    })
+
+}
+
+const mapDispatchToProps = {
+    setarCampoAmbienteAlt,
+    alterarAmbiente
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AlterarAmbiente);

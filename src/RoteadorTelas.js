@@ -24,6 +24,10 @@ import AlterarAmbiente from './paginas/alterarAmbiente';
 import NovaConta from './paginas/novaConta'
 import MenuMorador from './componentes/menuMorador';
 import { HeaderBackground } from 'react-navigation-stack';
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Setting a timer']);
+
 
 const Stack = createStackNavigator()
 
