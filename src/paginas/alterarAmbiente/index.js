@@ -22,7 +22,7 @@ const AlterarAmbiente = ({ ambiente, setarCampoAmbienteAlt, alterarAmbiente, nav
             <TextInput style={estilo.botaoFoto} value={ambiente.foto} onChangeText={valor => setarCampoAmbienteAlt('foto', valor)} ></TextInput>
             <View style={estilo.conteiner}>
                 <TextInput style={estilo.texto} placeholder="Nome do Ambiente" value={ambiente.nome} onChangeText={valor => setarCampoAmbienteAlt('nome', valor)} ></TextInput>
-                <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente" value={ambiente.lotacaoMaxima} onChangeText={valor => setarCampoAmbienteAlt('lotacaoMaxima', valor)} ></TextInput>
+                <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente" value={ambiente.lotacaoMaxima} keyboardType={'phone-pad'} onChangeText={valor => setarCampoAmbienteAlt('lotacaoMaxima', valor)} ></TextInput>
                 <TextInput style={estilo.descricao} placeholder="Descrição do Ambiente" value={ambiente.descricao} onChangeText={valor => setarCampoAmbienteAlt('descricao', valor)} ></TextInput>
                 <TouchableOpacity
                     style={estilo.botao}

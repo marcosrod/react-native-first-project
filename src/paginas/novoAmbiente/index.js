@@ -22,7 +22,7 @@ const NovoAmbiente = ({ ambienteCad, setarCampoAmbiente, salvarAmbiente, navigat
         <View style={estilo.botaoFoto}><TextInput style={estilo.textoBotaoFoto} placeholder={"Carregar Foto"} value={ambienteCad.foto} onChangeText={valor => setarCampoAmbiente('foto', valor)}></TextInput></View>
         <View style={estilo.conteiner}>
             <TextInput style={estilo.texto} placeholder="Nome do Ambiente" value={ambienteCad.nome} onChangeText={valor => setarCampoAmbiente('nome', valor)} ></TextInput>
-            <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente" value={ambienteCad.lotacaoMaxima} onChangeText={valor => setarCampoAmbiente('lotacaoMaxima', valor)}></TextInput>
+            <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente" value={ambienteCad.lotacaoMaxima} keyboardType={'phone-pad'} onChangeText={valor => setarCampoAmbiente('lotacaoMaxima', valor)}></TextInput>
             <TextInput style={estilo.descricao} placeholder="Descrição do Ambiente" value={ambienteCad.descricao} onChangeText={valor => setarCampoAmbiente('descricao', valor)} ></TextInput>
             <TouchableOpacity
                 style={estilo.botao}

@@ -3,13 +3,13 @@ import RoteadorTelas from './RoteadorTelas';
 import {Provider} from 'react-redux';
 import{createStore, applyMiddleware, compose} from 'redux';
 import reduxThunk from 'redux-thunk';
-import raizRedutor from './reducers';
+import raizReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension'
-// import { LogBox } from "react-native";  
-// LogBox.ignoreAllLogs(true);
+import { LogBox } from "react-native";  
+LogBox.ignoreAllLogs(true);
 
 
-const guardar  = createStore(raizRedutor, composeWithDevTools(
+const guardar  = createStore(raizReducer, composeWithDevTools(
     applyMiddleware(reduxThunk)
 ));
 

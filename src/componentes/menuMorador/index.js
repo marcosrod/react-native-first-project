@@ -48,10 +48,10 @@ function NavegadorPerfil(props){
         <TouchableOpacity onPress={()=>(props.navigation.navigate("Ambientes"))}>
             <View style={estilos.conteiner}>
                 <View style={estilos.imagemConteiner}>
-                    <Image source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyFsAc4KRtdO8T9ERQoGnrSgvuEp-rW9YQwA&usqp=CAU"}} style={estilos.imagemEstilo} />
+                <Icone style={estilos.imagemEstilo} name="user" size={140} color="#000000"/>
                 </View>
                 <View style={estilos.conteinerTexto}> 
-                    <Text style={estilos.navegadorTexto}>Albedo-san</Text>
+                    <Text style={estilos.navegadorTexto}>Morador Eventive</Text>
                     <Text style={estilos.navegadorTextoPequeno}>Morador</Text>    
                 </View>
             </View>

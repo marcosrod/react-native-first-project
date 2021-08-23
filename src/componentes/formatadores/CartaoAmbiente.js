@@ -48,6 +48,7 @@ const estilos = StyleSheet.create({
     width: '48%',
     marginLeft: 10,
     fontSize: 20,
+    fontWeight: 'bold'
   }
 
 });

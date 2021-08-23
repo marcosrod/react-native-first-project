@@ -15,8 +15,6 @@ const MinhasReservas = props => {
     return (
         <View style={estilo.conteiner}>
             <CabecalhoNavegacao title={"Minhas Reservas"} navigation={props.navigation} />
-            <ScrollView>
-                <View style={estilo.subconteiner}>
                     <FlatList
                         data={props.reservas}
                         renderItem={({ item }) => {
@@ -29,8 +27,6 @@ const MinhasReservas = props => {
                         }}
                         keyExtractor={item => item.id.toString()}
                     />
-                </View>
-            </ScrollView>
         </View>
     )
 

@@ -19,24 +19,24 @@ const Ambientes = props => {
     return (
         <View style={estilo.conteiner}>
             <CabecalhoNavegacao title={"Ambientes"} navigation={props.navigation} />
-                    <FlatList style={estilo.lista}
-                        data={props.ambientes}
-                        renderItem={({ item }) => {
-                            return (
-                                <CartaoAmbiente
-                                    ambiente={item}
-                                    navegando={() => props.navigation.navigate('Detalhes do Ambiente', { ambiente: item })}
-                                />
+            <FlatList style={estilo.lista}
+                data={props.ambientes}
+                renderItem={({ item }) => {
+                    return (
+                        <CartaoAmbiente
+                            ambiente={item}
+                            navegando={() => props.navigation.navigate('Detalhes do Ambiente', { ambiente: item })}
+                        />
 
-                            );
-                        }}
-                        keyExtractor={item => item.id.toString()}
-                    />
-                <Pressable style={estilo.icone} onPress={() => {
-                    props.navigation.navigate('Novo Ambiente')
-                }}>
-                    <Icone name="plus" size={20} color="black" />
-                </Pressable>
+                    );
+                }}
+                keyExtractor={item => item.id.toString()}
+            />
+            <Pressable style={estilo.icone} onPress={() => {
+                props.navigation.navigate('Novo Ambiente')
+            }}>
+                <Icone name="plus" size={20} color="black" />
+            </Pressable>
         </View>
     )
 }
@@ -69,13 +69,17 @@ const estilo = StyleSheet.create({
 
 const mapStateToProps = estado => {
     const { ambientesLista } = estado
+    if (ambientesLista) {
+        const chavesAmbientes = Object.keys(ambientesLista)
+        const ambientesVetor = chavesAmbientes.map(chaveAmbiente => {
+            return { ...ambientesLista[chaveAmbiente], id: chaveAmbiente }
+        })
+        return { ambientes: ambientesVetor }
+    }
+    return {}
 
-    const chavesAmbientes = Object.keys(ambientesLista)
-    const ambientesVetor = chavesAmbientes.map(chaveAmbiente => {
-        return { ...ambientesLista[chaveAmbiente], id: chaveAmbiente }
-    })
 
-    return { ambientes: ambientesVetor }
+    
 }
 
 export default connect(mapStateToProps, { atualizaLista })(Ambientes)

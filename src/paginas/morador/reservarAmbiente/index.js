@@ -33,8 +33,8 @@ const ReservarAmbiente = (props) => {
                         props.navigation.goBack()
                     }}
                 >
-                    <Icone name="check" size={40} color="black" />
-                    <Text style={estilo.textoBotao}>Confirmar Reserva</Text></TouchableOpacity>
+                    <Icone name="check" size={33} color="black" />
+                    <Text style={estilo.textoBotao}>CONFIRMAR RESERVA</Text></TouchableOpacity>
             </View>
         </View>
     )
@@ -79,11 +79,13 @@ const estilo = StyleSheet.create({
         height: 50,
         padding: 10,
         marginTop: 70,
+        justifyContent: 'space-around',
+        flexDirection: 'row'
     },
     textoBotao: {
         fontSize: 20,
         color: 'black',
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     imagem: {
         width: 170,
@@ -113,7 +115,6 @@ const estilo = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 7,
     },
-
 })
 
 const mapStateToProps = (estado) => {

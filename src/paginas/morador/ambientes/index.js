@@ -15,8 +15,7 @@ const Ambientes = props => {
     return (
         <View style={estilo.conteiner}>
             <CabecalhoNavegacao title={"Ambientes"} navigation={props.navigation} />
-            <ScrollView>
-                <View style={estilo.subconteiner}>
+
 
 
                     <FlatList
@@ -33,8 +32,7 @@ const Ambientes = props => {
                         keyExtractor={item => item.id.toString()}
                     />
 
-                </View>
-            </ScrollView>
+                
         </View>
     )
 }
@@ -53,13 +51,15 @@ const estilo = StyleSheet.create({
 
 const mapStateToProps = estado => {
     const { ambientesLista } = estado
+    if (ambientesLista) {
+        const chavesAmbientes = Object.keys(ambientesLista)
+        const ambientesVetor = chavesAmbientes.map(chaveAmbiente => {
+            return { ...ambientesLista[chaveAmbiente], id: chaveAmbiente }
+        })
+        return { ambientes: ambientesVetor }
+    }
+    return {}
 
-    const chavesAmbientes = Object.keys(ambientesLista)
-    const ambientesVetor = chavesAmbientes.map(chaveAmbiente => {
-        return { ...ambientesLista[chaveAmbiente], id: chaveAmbiente }
-    })
-
-    return { ambientes: ambientesVetor }
 }
 
 export default connect(mapStateToProps, { atualizaLista })(Ambientes)

@@ -66,11 +66,11 @@ const estilos = StyleSheet.create({
   titulo: {
     marginLeft: 10,
     fontSize: 20,
-    width: '45%'
+    width: '45%',
+    fontWeight: 'bold'
   },
   cancelar: {
     fontSize: 20,
-    fontWeight: 'bold',
     marginLeft: 40
   },
   topoCartao: {
