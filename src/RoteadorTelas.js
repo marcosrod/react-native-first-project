@@ -15,7 +15,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Login from '../src/paginas/login';
+import Login from '../src/paginas/logar';
 import Ambientes from '../src/paginas/ambientes';
 import Menu from '../src/componentes/menu';
 import DetalhesAmbiente from './paginas/detalhesAmbiente';
@@ -52,22 +52,5 @@ export default function RoteadorTelas(){
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+
 

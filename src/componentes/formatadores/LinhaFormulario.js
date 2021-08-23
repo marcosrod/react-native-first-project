@@ -5,7 +5,7 @@ const LinhaFormulario = (props) => {
     const { children } = props;
 
     return (
-        <View style={styles.container}>
+        <View style={estilos.conteiner}>
             {children}
         </View>
     )
@@ -13,8 +13,8 @@ const LinhaFormulario = (props) => {
 }
 
 
-const styles = StyleSheet.create({
-    container: {
+const estilos = StyleSheet.create({
+    conteiner: {
         padding: 5,
         marginTop: 5,
         marginBottom: 5,

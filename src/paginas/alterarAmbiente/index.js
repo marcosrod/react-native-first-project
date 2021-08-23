@@ -1,17 +1,24 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { setarCampoAmbienteAlt, alterarAmbiente } from '../../acoes/acoesAmbienteAlterar'
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icone from 'react-native-vector-icons/FontAwesome'
 
-Icon.loadFont();
+Icone.loadFont();
 
 
 const AlterarAmbiente = ({ ambiente, setarCampoAmbienteAlt, alterarAmbiente, navigation }) => {
 
     return (
         <View>
-            <View style={estilo.imagem}></View>
+            <View style={estilo.imagemContainer} >
+                <Image
+                    style={estilo.imagem_perfil}
+                    source={{
+                        uri: ambiente.foto,
+                    }}
+                />
+            </View>
             <TextInput style={estilo.botaoFoto} value={ambiente.foto} onChangeText={valor => setarCampoAmbienteAlt('foto', valor)} ></TextInput>
             <View style={estilo.conteiner}>
                 <TextInput style={estilo.texto} placeholder="Nome do Ambiente" value={ambiente.nome} onChangeText={valor => setarCampoAmbienteAlt('nome', valor)} ></TextInput>
@@ -19,12 +26,12 @@ const AlterarAmbiente = ({ ambiente, setarCampoAmbienteAlt, alterarAmbiente, nav
                 <TextInput style={estilo.descricao} placeholder="Descrição do Ambiente" value={ambiente.descricao} onChangeText={valor => setarCampoAmbienteAlt('descricao', valor)} ></TextInput>
                 <TouchableOpacity
                     style={estilo.botao}
-                    onPress={async () => {
+                    onPress={() => {
                         alterarAmbiente(ambiente)
                         navigation.goBack()
                     }}
-                    >
-                    <Icon name= "check" size={40} color="black" />
+                >
+                    <Icone name="check" size={40} color="black" />
                     <Text style={estilo.textoBotao}>CONFIRMAR ALTERAÇÃO</Text></TouchableOpacity>
             </View>
         </View>
@@ -65,7 +72,7 @@ const estilo = StyleSheet.create({
         width: 333,
         height: 60,
         padding: 10,
-        marginTop: -20,
+        marginTop: -30,
         flexDirection: 'row'
     },
     textoBotao: {
@@ -74,9 +81,11 @@ const estilo = StyleSheet.create({
         alignSelf: 'center',
         marginLeft: 20
     },
-    imagem: {
-        width: 170,
-        height: 120,
+    imagemContainer: {
+        width: 180,
+        height: 130,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: '#E5E5E5',
         marginLeft: 120,
         marginTop: 12,
@@ -93,7 +102,14 @@ const estilo = StyleSheet.create({
         width: 170,
         padding: 6,
         marginTop: 3,
-    }
+        marginLeft: 8,
+    },
+    imagem_perfil: {
+        resizeMode: 'cover',
+        height: 120,
+        borderRadius: 20,
+        width: 170,
+      },
 
 })
 

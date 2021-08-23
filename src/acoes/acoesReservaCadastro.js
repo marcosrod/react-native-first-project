@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import { Alert } from 'react-native';
 
 export const SETAR_CAMPO_RESERVA = 'SETAR_CAMPO_RESERVA';
 

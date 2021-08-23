@@ -24,7 +24,6 @@ const estilos = StyleSheet.create({
     flex: 1
   },
   cartao: {
-    flex: 1,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#bfbfbf',
@@ -40,13 +39,15 @@ const estilos = StyleSheet.create({
   imagem_perfil: {
     resizeMode: 'cover',
     height: 120,
+    width: '50%',
     borderRadius: 5,
-    flex: 1,
+
   },
   titulo: {
-    flex: 2,
+
+    width: '48%',
     marginLeft: 10,
-    fontSize: 20
+    fontSize: 20,
   }
 
 });

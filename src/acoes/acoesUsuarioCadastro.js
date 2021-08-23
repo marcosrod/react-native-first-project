@@ -32,7 +32,7 @@ export const salvarUsuario = usuario => {
 
 }
 
-export const validaCadastro = ({ email, senha }) => dispatch => {
+export const validaCadastro = ({ email, senha }) => async dispatch => {
 
     return firebase
         .auth()
@@ -51,12 +51,12 @@ export const validaCadastro = ({ email, senha }) => dispatch => {
                         [{
                             text: 'Tentar Novamente',
                             onPress: () => {
-                                resolve()
+                                reject()
                             }
                         }, {
                             text: 'OK',
                             onPress: () => {
-                                resolve()
+                                reject()
                             }
                         }],
                         {

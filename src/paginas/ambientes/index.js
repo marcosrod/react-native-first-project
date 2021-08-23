@@ -5,10 +5,10 @@ import CabecalhoNavegacao from '../../componentes/cabecalhoNavegacao';
 import { connect } from 'react-redux';
 import { atualizaLista } from '../../acoes';
 import { useEffect } from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icone from 'react-native-vector-icons/FontAwesome';
 
 
-Icon.loadFont();
+Icone.loadFont();
 
 const Ambientes = props => {
 
@@ -19,9 +19,6 @@ const Ambientes = props => {
     return (
         <View style={estilo.conteiner}>
             <CabecalhoNavegacao title={"Ambientes"} navigation={props.navigation} />
-            <ScrollView>
-                <View style={estilo.subconteiner}>
-                    
                     <FlatList style={estilo.lista}
                         data={props.ambientes}
                         renderItem={({ item }) => {
@@ -35,13 +32,10 @@ const Ambientes = props => {
                         }}
                         keyExtractor={item => item.id.toString()}
                     />
-
-                </View>
-            </ScrollView>
                 <Pressable style={estilo.icone} onPress={() => {
                     props.navigation.navigate('Novo Ambiente')
                 }}>
-                    <Icon name="plus" size={20} color="black" />
+                    <Icone name="plus" size={20} color="black" />
                 </Pressable>
         </View>
     )
@@ -83,7 +77,5 @@ const mapStateToProps = estado => {
 
     return { ambientes: ambientesVetor }
 }
-
-//export default Ambientes;
 
 export default connect(mapStateToProps, { atualizaLista })(Ambientes)

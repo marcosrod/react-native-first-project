@@ -1,28 +1,28 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icone from 'react-native-vector-icons/FontAwesome';
 
-Icon.loadFont();
+Icone.loadFont();
 
 export default function cabecalhoNavegacao({title, navigation}) {
     return (
-        <View style={styles.container}>
-            <View style={styles.containerButton}>
-                <TouchableOpacity style={styles.button} onPress={()=>{navigation.openDrawer()}}>
-                    <Icon name="bars" size={28} color="#000000" />
+        <View style={estilos.conteiner}>
+            <View style={estilos.conteinerButton}>
+                <TouchableOpacity style={estilos.button} onPress={()=>{navigation.openDrawer()}}>
+                    <Icone name="bars" size={28} color="#000000" />
                 </TouchableOpacity>
             </View>
-            <View style={styles.containerTitle}>
-                <Text style={styles.text}>{title}</Text>
+            <View style={estilos.conteinerTitle}>
+                <Text style={estilos.text}>{title}</Text>
             </View>
         </View>
     )
 
 }
 
-const styles = StyleSheet.create({
-    container: {
+const estilos = StyleSheet.create({
+    conteiner: {
         flexDirection: 'row',
         height: 45,
         backgroundColor: '#212529'
@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    containerTitle: {
+    conteinerTitle: {
         backgroundColor: '#212529',
         width: '80%',
 
     },
-    containerButton: {
+    conteinerButton: {
         justifyContent: 'center',
         backgroundColor: '#212529',
         paddingHorizontal: 10

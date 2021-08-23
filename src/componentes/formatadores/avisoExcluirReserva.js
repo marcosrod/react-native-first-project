@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from 'react-native';
 
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icone from 'react-native-vector-icons/FontAwesome';
 
-Icon.loadFont();
+Icone.loadFont();
 
-const AvisoExcluirReserva = ({excluirReserva, reserva, setarAviso, navigation, aviso}) => {
+const AvisoExcluirReserva = ({excluirReserva, reserva, setarAviso, aviso}) => {
     return (
         <Modal
             visible={aviso}
@@ -23,11 +23,11 @@ const AvisoExcluirReserva = ({excluirReserva, reserva, setarAviso, navigation, a
                                 excluirReserva(reserva)
                         }}>
                             <Text style={estilos.simT}>SIM</Text>
-                            <Icon name="check-circle" size={30} color="black" />
+                            <Icone name="check-circle" size={30} color="black" />
                         </TouchableOpacity>
                         <TouchableOpacity style={estilos.nao} onPress={() => setarAviso(false)}>
                             <Text style={estilos.naoT}>NÃO</Text>
-                            <Icon name= "times-circle" size={30} color="black" />
+                            <Icone name= "times-circle" size={30} color="black" />
                             
                         </TouchableOpacity>
                     </View>
@@ -100,6 +100,6 @@ const estilos = StyleSheet.create({
 
 })
 
-//export default AvisoExcluir;
+
 
 export default AvisoExcluirReserva;

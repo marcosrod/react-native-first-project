@@ -44,7 +44,7 @@ const estilo = StyleSheet.create({
         height: '100%'
     },
     subconteiner: {
-        height: Dimensions.get("window").height + 60,
+        height: Dimensions.get("window").height + 120,
 
     },
 })

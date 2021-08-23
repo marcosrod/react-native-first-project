@@ -40,11 +40,13 @@ const estilos = StyleSheet.create({
   imagem_perfil: {
     resizeMode: 'cover',
     height: 120,
+    width: '50%',
     borderRadius: 5,
   },
   titulo: {
     marginLeft: 10,
     fontSize: 20,
+    width: '50%',
     fontWeight: 'bold',
   }
 

@@ -4,9 +4,9 @@ import CartaoDetalhesAmbiente from '../../componentes/formatadores/CartaoDetalhe
 import { setarCamposAmbiente, setarAviso } from '../../acoes';
 import { connect } from 'react-redux';
 import AvisoExcluir from '../../componentes/formatadores/avisoExcluir';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icone from 'react-native-vector-icons/FontAwesome'
 
-Icon.loadFont();
+Icone.loadFont();
 
 function DetalhesAmbiente(props) {
     
@@ -22,20 +22,20 @@ function DetalhesAmbiente(props) {
             <CartaoDetalhesAmbiente ambiente={props.ambienteDetalhes} />
             <View style={estilos.conteinerBotao}>
                 <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas', ambiente.id)}>
-                    <Icon name= "eye" size={40} color="black" />
+                    <Icone name= "eye" size={40} color="black" />
                     <Text style={estilos.texto} >VISUALIZAR RESERVAS</Text>
                 </Pressable>
                 <Pressable style={estilos.botao} onPress={() => {
                     props.navigation.navigate('Alterar Ambiente')
                     }}>
-                    <Icon name= "pencil-square-o" size={40} color="black" />
+                    <Icone name= "pencil-square-o" size={40} color="black" />
                     <Text style={estilos.texto}>ALTERAR AMBIENTE</Text>
                 </Pressable>
                 <Pressable 
                     style={estilos.botao}
                     onPress={() => props.setarAviso(true)}
                 >
-                <Icon name= "minus-circle" size={40} color="black" />
+                <Icone name= "minus-circle" size={40} color="black" />
                 <Text style={estilos.texto}>DELETAR AMBIENTE</Text>
                 </Pressable>
             </View>

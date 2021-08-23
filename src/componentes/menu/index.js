@@ -5,87 +5,87 @@ import {createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerIt
 import NovoAmbiente from '../../paginas/novoAmbiente'
 import Ambientes from '../../paginas/ambientes'
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icone from 'react-native-vector-icons/FontAwesome';
 
-Icon.loadFont();
+Icone.loadFont();
 
-const Drawer = createDrawerNavigator();
+const Navegador = createDrawerNavigator();
 
 export default function Menu(){
     return(
-        <Drawer.Navigator 
+        <Navegador.Navigator 
             initialRouteName = "Ambientes"
-            drawerStyle={styles.drawerStyle}
+            drawerStyle={estilos.navegadorEstilo}
             screenOptions={{headerShown: false}}
-            drawerContent={props => <CustomDrawerContent {...props} />}
+            drawerContent={props => <NavegadorConteudoCustomizado {...props} />}
         >
-            <Drawer.Screen 
+            <Navegador.Screen 
                 name = "Ambientes" 
                 component={Ambientes}
-                options={{drawerIcon: config => <Icon name="glass" size={25} color="#000000"/>, drawerLabelStyle: {color: '#000000', fontSize: 18}}}
+                options={{drawerIcon: config => <Icone name="glass" size={25} color="#000000"/>, drawerLabelStyle: {color: '#000000', fontSize: 18}}}
             />
-            <Drawer.Screen 
+            <Navegador.Screen 
                 name = "Novo Ambiente" 
                 component={NovoAmbiente} 
-                options={{drawerIcon: config => <Icon name="plus" size={30} color="#000000"/>, drawerLabelStyle: {color: '#000000', fontSize: 18}} }
+                options={{drawerIcon: config => <Icone name="plus" size={30} color="#000000"/>, drawerLabelStyle: {color: '#000000', fontSize: 18}} }
             />
-        </Drawer.Navigator>
+        </Navegador.Navigator>
     )
 }
 
-function CustomDrawerContent(props){
+function NavegadorConteudoCustomizado(props){
     return(
         <DrawerContentScrollView {...props}>
-            <ProfileDrawer {...props}/>
+            <NavegadorPerfil {...props}/>
             <DrawerItemList {...props} />
-            <DrawerItem label="Sair" onPress={()=> {props.navigation.popToTop()}} labelStyle={{color:'#000000', fontSize: 18}} icon={() => <Icon name="sign-out" size={30} color="#000000"/> } />
+            <DrawerItem label="Sair" onPress={()=> {props.navigation.popToTop()}} labelStyle={{color:'#000000', fontSize: 18}} icon={() => <Icone name="sign-out" size={30} color="#000000"/> } />
         </DrawerContentScrollView>
     )
 }
 
-function ProfileDrawer(props){
+function NavegadorPerfil(props){
     return(
         <TouchableOpacity onPress={()=>(props.navigation.navigate("Ambientes"))}>
-            <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    <Image source={{uri: "https://randomuser.me/api/portraits/men/39.jpg"}} style={styles.imageStyle} />
+            <View style={estilos.conteiner}>
+                <View style={estilos.imagemConteiner}>
+                    <Image source={{uri: "https://randomuser.me/api/portraits/men/39.jpg"}} style={estilos.imagemEstilo} />
                 </View>
-                <View style={styles.containerText}> 
-                    <Text style={styles.drawerText}>AdminEventive</Text>
-                    <Text style={styles.drawerTextSmall}>Administrador</Text>    
+                <View style={estilos.conteinerTexto}> 
+                    <Text style={estilos.navegadorTexto}>AdminEventive</Text>
+                    <Text style={estilos.navegadorTextoPequeno}>Administrador</Text>    
                 </View>
             </View>
         </TouchableOpacity>
     )
 }
 
-const styles = StyleSheet.create({
-    imageContainer: {
+const estilos = StyleSheet.create({
+    imagemConteiner: {
         marginTop: 15,
         borderWidth: 1,
         borderColor: '#DDD',
         elevation: 6
     },
-    containerText: {
+    conteinerTexto: {
         alignItems: 'center'
     },
-    drawerTextSmall: {
+    navegadorTextoPequeno: {
         color: '#000000',
         fontSize: 12
     },
-    drawerText: {
+    navegadorTexto: {
         color: '#000000',
         fontSize: 18
     },
-    imageStyle: {
+    imagemEstilo: {
         width: 100,
         height: 100
     },
-    drawerStyle: {
+    navegadorEstilo: {
         width: 250,
         backgroundColor: '#d694b8'
     },
-    container: {
+    conteiner: {
         alignItems: 'center',
         height: 165
     }

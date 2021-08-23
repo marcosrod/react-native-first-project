@@ -14,7 +14,6 @@ export const atualizaListaMinhasReservas = () => {
         const usuario = (await firebase.database().ref(`/usuarios/${currentUser.uid}`).get()).val()
         const idUsuario = Object.getOwnPropertyNames(usuario)
         const nomeUsuario = usuario[idUsuario].nome
-        //const reservas = (await firebase.database().ref(`/reservas`).get()).val()
         var reservasL
         firebase
             .database()
@@ -39,7 +38,6 @@ export const atualizaListaMinhasReservas = () => {
 
 
             })
-        //const reservas = Object.getOwnPropertyNames(reservasL)
 
     }
 }

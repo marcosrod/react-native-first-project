@@ -2,7 +2,9 @@ import * as React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { setarCampoReserva, salvarReserva } from '../../../acoes';
 import { connect } from 'react-redux';
+import Icone from 'react-native-vector-icons/FontAwesome'
 
+Icone.loadFont()
 
 const ReservarAmbiente = (props) => {
 
@@ -31,6 +33,7 @@ const ReservarAmbiente = (props) => {
                         props.navigation.goBack()
                     }}
                 >
+                    <Icone name="check" size={40} color="black" />
                     <Text style={estilo.textoBotao}>Confirmar Reserva</Text></TouchableOpacity>
             </View>
         </View>

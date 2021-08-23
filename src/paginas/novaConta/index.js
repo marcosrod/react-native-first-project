@@ -1,29 +1,27 @@
 import * as React from 'react';
-import { View, Text, Button, StyleSheet, ActivityIndicator, Alert, TextInput, TouchableOpacity } from 'react-native'
-import LinhaFormulario from '../../componentes/formatadores/LinhaFormulario'
+import { View, Text, Button, StyleSheet, ActivityIndicator, Alert, TextInput, TouchableOpacity, Image } from 'react-native'
 import firebase from 'firebase'
 import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { setarCampo, salvarUsuario, validaCadastro } from '../../acoes/acoesUsuarioCadastro';
-import { useState } from 'react';
 
 
 const CriarConta = ({ usuarioCad, setarCampo, salvarUsuario, navigation, validaCadastro }) => {
 
-    async function validaCad({email, senha}) {
-        
+    async function validaCad({ email, senha }) {
+
         validaCadastro({ email, senha })
             .then(usuario => {
                 const { currentUser } = firebase.auth();
-                if (currentUser.uid === "Usn4PdszpTb98HMKX36VZmYAWVb2"){
+                if (currentUser.uid === "Usn4PdszpTb98HMKX36VZmYAWVb2") {
                     salvarUsuario(usuarioCad)
                     navigation.navigate('Menu');
-                }else{
+                } else {
                     salvarUsuario(usuarioCad)
                     navigation.navigate('MenuMorador');
                 }
             })
-    
+
             .catch(erro => {
                 console.log(erro)
             })
@@ -34,7 +32,14 @@ const CriarConta = ({ usuarioCad, setarCampo, salvarUsuario, navigation, validaC
         <ScrollView>
             <View style={estilo.tela}>
                 <Text style={estilo.textoTitulo}>Nova Conta</Text>
-                <View style={estilo.imagem}></View>
+                <View style={estilo.imagemContainer}>
+                    <Image
+                        style={estilo.imagem_perfil}
+                        source={{
+                            uri: usuarioCad.foto,
+                        }}
+                    />
+                </View>
                 <TouchableOpacity style={estilo.botaoFoto}><TextInput style={estilo.textoBotaoFoto} placeholder={"Carregar Foto"} value={usuarioCad.foto} onChangeText={valor => setarCampo('foto', valor)} ></TextInput></TouchableOpacity>
                 <View style={estilo.conteiner}>
                     <TextInput style={estilo.texto} placeholder="Nome Completo" value={usuarioCad.nome} onChangeText={valor => setarCampo('nome', valor)} ></TextInput>
@@ -44,8 +49,8 @@ const CriarConta = ({ usuarioCad, setarCampo, salvarUsuario, navigation, validaC
                     <TextInput style={estilo.texto} placeholder="Confirmar Senha" value={usuarioCad.confirmarSenha} onChangeText={valor => setarCampo('confirmarSenha', valor)} secureTextEntry={true} ></TextInput>
                     <TouchableOpacity
                         style={estilo.botao}
-                        onPress={async () => {
-                            await validaCad(usuarioCad)
+                        onPress={() => {
+                            validaCad(usuarioCad)
                         }}>
                         <Text style={estilo.textoBotao} >Confirmar Cadastro</Text>
                     </TouchableOpacity>
@@ -55,7 +60,7 @@ const CriarConta = ({ usuarioCad, setarCampo, salvarUsuario, navigation, validaC
         </ScrollView>
     )
 
-    
+
 
 }
 
@@ -107,12 +112,12 @@ const estilo = StyleSheet.create({
         color: 'black',
         alignSelf: 'center'
     },
-    imagem: {
-        width: 150,
-        height: 100,
+    imagemContainer: {
+        width: 170,
+        height: 120,
         backgroundColor: '#E5E5E5',
-        marginLeft: 130,
-        marginTop: 5,
+        marginLeft: 120,
+        marginTop: 12,
         borderRadius: 30
     },
     botaoFoto: {
@@ -135,7 +140,13 @@ const estilo = StyleSheet.create({
     tela: {
         backgroundColor: '#212529',
         height: '100%'
-    }
+    },
+    imagem_perfil: {
+        resizeMode: 'cover',
+        height: 120,
+        borderRadius: 20,
+        width: 170,
+      },
 
 })
 

@@ -12,7 +12,7 @@ const usuarioSaida = () => ({
     type: USUARIO_SAIDA,
 })
 
-export const validaLogin = ({ email, senha }) => dispatch => {
+export const validaLogin = ({ email, senha }) => async dispatch => {
     return firebase
         .auth()
         .signInWithEmailAndPassword(email, senha)
@@ -30,12 +30,12 @@ export const validaLogin = ({ email, senha }) => dispatch => {
                         [{
                             text: 'Tentar Novamente',
                             onPress: () => {
-                                resolve()
+                                reject()
                             }
                         }, {
                             text: 'OK',
                             onPress: () => {
-                                resolve()
+                                reject()
                             }
                         }],
                         {

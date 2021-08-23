@@ -1,9 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-Icon.loadFont();
 
 const CartaoDetalhesAmbiente = ({ ambiente }) => (
   <View 
@@ -38,10 +35,10 @@ const estilos = StyleSheet.create({
   },
   imagem_perfil: {
     resizeMode: 'cover',
-    height: 100,
+    height: 120,
     borderRadius: 20,
-    width: 150,
-    marginTop: '5%',
+    width: 180,
+    marginTop: '3%',
     marginBottom: '5%'
   },
   descricao: {

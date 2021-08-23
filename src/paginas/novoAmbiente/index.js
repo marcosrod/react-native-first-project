@@ -1,29 +1,36 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
 import CabecalhoNavegacao from '../../componentes/cabecalhoNavegacao';
 import { setarCampoAmbiente, salvarAmbiente } from '../../acoes/acoesAmbienteCadastro'
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icone from 'react-native-vector-icons/FontAwesome'
 
-Icon.loadFont();
+Icone.loadFont();
 
-const NovoAmbiente = ({ ambienteCad, setarCampoAmbiente, salvarAmbiente, navigation}) => (
+const NovoAmbiente = ({ ambienteCad, setarCampoAmbiente, salvarAmbiente, navigation }) => (
 
     <View style={estilo.tela}>
         <CabecalhoNavegacao title={"Novo Ambiente"} navigation={navigation} />
-        <View style={estilo.imagem}></View>
-        <TouchableOpacity style={estilo.botaoFoto}><TextInput style={estilo.textoBotaoFoto} placeholder={"Carregar Foto"} value={ambienteCad.foto} onChangeText={valor => setarCampoAmbiente('foto', valor)}></TextInput></TouchableOpacity>
+        <View style={estilo.imagemContainer}>
+            <Image
+                style={estilo.imagem_perfil}
+                source={{
+                    uri: ambienteCad.foto,
+                }}
+            />
+        </View>
+        <View style={estilo.botaoFoto}><TextInput style={estilo.textoBotaoFoto} placeholder={"Carregar Foto"} value={ambienteCad.foto} onChangeText={valor => setarCampoAmbiente('foto', valor)}></TextInput></View>
         <View style={estilo.conteiner}>
             <TextInput style={estilo.texto} placeholder="Nome do Ambiente" value={ambienteCad.nome} onChangeText={valor => setarCampoAmbiente('nome', valor)} ></TextInput>
             <TextInput style={estilo.texto} placeholder="Lotação Máxima do Ambiente" value={ambienteCad.lotacaoMaxima} onChangeText={valor => setarCampoAmbiente('lotacaoMaxima', valor)}></TextInput>
             <TextInput style={estilo.descricao} placeholder="Descrição do Ambiente" value={ambienteCad.descricao} onChangeText={valor => setarCampoAmbiente('descricao', valor)} ></TextInput>
             <TouchableOpacity
                 style={estilo.botao}
-                onPress={async () => {
-                    await salvarAmbiente(ambienteCad)
+                onPress={() => {
+                    salvarAmbiente(ambienteCad)
                     navigation.goBack()
                 }}>
-                <Icon name= "check" size={40} color="black" />
+                <Icone name="check" size={40} color="black" />
                 <Text style={estilo.textoBotao} >CONFIRMAR CADASTRO</Text>
             </TouchableOpacity>
         </View>
@@ -78,7 +85,7 @@ const estilo = StyleSheet.create({
         color: 'black',
         alignSelf: 'center'
     },
-    imagem: {
+    imagemContainer: {
         width: 170,
         height: 120,
         backgroundColor: '#E5E5E5',
@@ -96,7 +103,13 @@ const estilo = StyleSheet.create({
         height: 40,
         padding: 0,
         marginTop: 3,
-    }
+    },
+    imagem_perfil: {
+        resizeMode: 'cover',
+        height: 120,
+        borderRadius: 20,
+        width: 170,
+      },
 
 })
 

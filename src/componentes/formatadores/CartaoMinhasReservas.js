@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icone from 'react-native-vector-icons/FontAwesome';
 import { excluirReserva, setarAviso } from '../../acoes'
 import { connect } from 'react-redux'
 import AvisoExcluirReserva from '../formatadores/avisoExcluirReserva'
 
-Icon.loadFont();
+Icone.loadFont();
 
 const CartaoMinhasReservas = (props) => (
 
@@ -28,7 +28,7 @@ const CartaoMinhasReservas = (props) => (
         }}
         style={estilos.conteiner}
       >
-        <Icon style={estilos.icone} name="times-circle" size={35} color="black" />
+        <Icone style={estilos.icone} name="times-circle" size={35} color="black" />
         <Text style={estilos.cancelar}>CANCELAR RESERVA</Text>
       </TouchableOpacity >
 
@@ -59,7 +59,7 @@ const estilos = StyleSheet.create({
   },
   foto: {
     resizeMode: 'cover',
-    height: 100,
+    height: 120,
     width: '50%',
     borderRadius: 5,
   },
@@ -96,6 +96,6 @@ const mapearEstadosPropriedades = (estado) => {
 
 }
 
-//export default CartaoMinhasReservas;
+
 export default connect(mapearEstadosPropriedades, { excluirReserva, setarAviso })(CartaoMinhasReservas)
 

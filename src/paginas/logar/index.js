@@ -4,7 +4,7 @@ import LinhaFormulario from '../../componentes/formatadores/LinhaFormulario'
 import firebase from 'firebase'
 
 import { connect } from 'react-redux';
-import { validaLogin } from '../../acoes/'
+import { validaLogin } from '../../acoes'
 
 class Login extends React.Component {
 
@@ -23,12 +23,6 @@ class Login extends React.Component {
         
         if (!firebase.apps.length) {
             var firebaseConfig = {
-                // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-                // authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-                // projectId: process.env.REACT_APP_PROJECT_ID,
-                // storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-                // messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-                // appId: process.env.REACT_APP_APP_ID
                 apiKey: "AIzaSyAz64NlwMqC3xvIT6bg8rt_d4jMmu0s3UM",
                 authDomain: "eventive-661ff.firebaseapp.com",
                 projectId: "eventive-661ff",
@@ -62,7 +56,6 @@ class Login extends React.Component {
                     this.setState({ carregando: false, mensagem: "" })
                     this.props.navigation.navigate('MenuMorador');
                 }else {
-
                     this.setState({
                         carregando: false,
                         mensagem: '',
@@ -73,7 +66,7 @@ class Login extends React.Component {
             .catch(erro => {
                 this.setState({
                     carregando: false,
-                    mensagem: this.identificadorDeErros(erro.code),
+                    mensagem: this.identificadorDeErros(erro),
                 })
 
 
@@ -127,7 +120,7 @@ class Login extends React.Component {
                 <Text style={estilo.textoTitulo}>Eventive</Text>
                 <LinhaFormulario>
                     <TextInput
-                        style={estilo.textInput}
+                        style={estilo.textoEntrada}
                         placeholder="E-mail"
                         placeholderTextColor='grey'
                         value={this.state.email}
@@ -141,7 +134,8 @@ class Login extends React.Component {
                 </LinhaFormulario>
                 <LinhaFormulario>
                     <TextInput
-                        style={estilo.textInput}
+                        style={estilo.textoEntrada
+                        }
                         placeholder="Senha"
                         placeholderTextColor='grey'
                         secureTextEntry={true}
@@ -170,7 +164,7 @@ class Login extends React.Component {
 
 
 const estilo = StyleSheet.create({
-    textInput: {
+    textoEntrada: {
         borderWidth: 1,
         borderColor: 'gray',
         height: 50,

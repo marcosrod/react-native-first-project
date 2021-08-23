@@ -4,12 +4,12 @@ import { excluirAmbiente, setarAviso } from '../../acoes';
 import { connect } from 'react-redux';
 
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-import detalhesAmbiente from '../../paginas/detalhesAmbiente';
+import Icone from 'react-native-vector-icons/FontAwesome';
 
-Icon.loadFont();
 
-const AvisoExcluir = (props, {ambiente}) => {
+Icone.loadFont();
+
+const AvisoExcluir = (props) => {
     return (
         <Modal
             visible={props.aviso}
@@ -21,17 +21,17 @@ const AvisoExcluir = (props, {ambiente}) => {
                     <Text style={estilos.texto1}> Confirmar Exclusão de Ambiente?</Text>
                     <Text style={estilos.texto2}> Esta ação não pode ser desfeita!</Text>
                     <View style={estilos.icones}>
-                        <TouchableOpacity style={estilos.sim} onPress={async () => {
+                        <TouchableOpacity style={estilos.sim} onPress={() => {
                                 props.setarAviso(false)
                                 props.excluirAmbiente(props.ambiente)
                                 props.navigation.goBack()
                         }}>
                             <Text style={estilos.simT}>SIM</Text>
-                            <Icon name="check-circle" size={30} color="black" />
+                            <Icone name="check-circle" size={30} color="black" />
                         </TouchableOpacity>
                         <TouchableOpacity style={estilos.nao} onPress={() => props.setarAviso(false)}>
                             <Text style={estilos.naoT}>NÃO</Text>
-                            <Icon name= "times-circle" size={30} color="black" />
+                            <Icone name= "times-circle" size={30} color="black" />
                             
                         </TouchableOpacity>
                     </View>
@@ -104,6 +104,5 @@ const estilos = StyleSheet.create({
 
 })
 
-//export default AvisoExcluir;
 
 export default connect(null, {excluirAmbiente})(AvisoExcluir);
