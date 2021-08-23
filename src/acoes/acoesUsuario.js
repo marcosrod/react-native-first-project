@@ -12,7 +12,7 @@ const usuarioSaida = () => ({
     type: USUARIO_SAIDA,
 })
 
-export const validaLogin = ({ email, senha }) => async dispatch => {
+export const validaEntrada = ({ email, senha }) => async dispatch => {
     return firebase
         .auth()
         .signInWithEmailAndPassword(email, senha)

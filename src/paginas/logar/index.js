@@ -4,9 +4,9 @@ import LinhaFormulario from '../../componentes/formatadores/LinhaFormulario'
 import firebase from 'firebase'
 
 import { connect } from 'react-redux';
-import { validaLogin } from '../../acoes'
+import { validaEntrada } from '../../acoes'
 
-class Login extends React.Component {
+class Logar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -41,12 +41,12 @@ class Login extends React.Component {
     }
 
 
-    validaLogin() {
+    validaEntrada() {
         
         this.setState({ carregando: true });
         const { email, senha } = this.state;
 
-        this.props.validaLogin({ email, senha })
+        this.props.validaEntrada({ email, senha })
             .then(usuario => {
                 const { currentUser } = firebase.auth();
                 if (currentUser.uid === "Usn4PdszpTb98HMKX36VZmYAWVb2") {
@@ -93,7 +93,7 @@ class Login extends React.Component {
             <View>
                 <TouchableOpacity
                     style={estilo.botaoEntrar}
-                    onPress={() => this.validaLogin()}
+                    onPress={() => this.validaEntrada()}
                 >
                     <Text style={estilo.textoBotao}>Entrar</Text>
                 </TouchableOpacity>
@@ -228,4 +228,4 @@ const estilo = StyleSheet.create({
     },
 })
 
-export default connect(null, { validaLogin })(Login)
+export default connect(null, { validaEntrada })(Logar)
