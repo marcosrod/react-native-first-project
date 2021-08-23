@@ -18,7 +18,7 @@ function DetalhesAmbiente(props) {
             <AvisoExcluir aviso={props.aviso} setarAviso={props.setarAviso} ambiente={ambiente} navigation={props.navigation}/>
             <CartaoDetalhesAmbiente ambiente={props.ambienteDetalhes} />
             <View style={estilos.conteinerBotao}>
-                <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas')}>
+                <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas', ambiente.id)}>
                     <Text style={estilos.texto} >Visualizar Reservas</Text>
                 </Pressable>
                 <Pressable style={estilos.botao} onPress={() => {
