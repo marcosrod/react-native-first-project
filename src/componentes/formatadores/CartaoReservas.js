@@ -35,7 +35,7 @@ const estilos = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         marginRight: 10,
-        backgroundColor: "#FFF",
+        backgroundColor: '#E5E5E5',
         justifyContent: 'center',
         alignItems: "center",
     },

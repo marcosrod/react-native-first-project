@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { setarCampoReserva, salvarReserva } from '../../../acoes';
 import { connect } from 'react-redux';
 
@@ -26,7 +26,7 @@ const ReservarAmbiente = (props) => {
 
                 <TouchableOpacity
                     style={estilo.botao}
-                    onPress={async () => {
+                    onPress={() => {
                         props.salvarReserva(props.reserva)
                         props.navigation.goBack()
                     }}

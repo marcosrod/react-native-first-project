@@ -1,34 +1,40 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {excluirReserva} from '../../acoes'
-import {connect} from 'react-redux'
+import { excluirReserva, setarAviso } from '../../acoes'
+import { connect } from 'react-redux'
+import AvisoExcluirReserva from '../formatadores/avisoExcluirReserva'
 
 Icon.loadFont();
 
 const CartaoMinhasReservas = (props) => (
 
-  <View style={estilos.cartao}>
-    <View style={estilos.topoCartao}>
-      <Image
-        style={estilos.foto}
-        source={{
-          uri: props.reserva.ambienteFoto,
-        }}
-      />
-      <Text style={estilos.titulo}>{props.reserva.ambienteNome}</Text>
-    </View>
-    <TouchableOpacity
-      onPress={() => {
-        props.excluirReserva(props.reserva)
-      }}
-      style={estilos.conteiner}
-    >
-      <Icon style={estilos.icone} name= "times-circle" size={35} color="black" />
-      <Text style={estilos.cancelar}>CANCELAR RESERVA</Text>
-    </TouchableOpacity >
+  <View>
+    <AvisoExcluirReserva excluirReserva={props.excluirReserva} reserva={props.reserva} navigation={props.navigation} aviso={props.aviso} setarAviso={props.setarAviso} />
+    <View style={estilos.cartao}>
 
+      <View style={estilos.topoCartao}>
+        <Image
+          style={estilos.foto}
+          source={{
+            uri: props.reserva.ambienteFoto,
+          }}
+        />
+        <Text style={estilos.titulo}>{props.reserva.ambienteNome}</Text>
+      </View>
+      <TouchableOpacity
+        onPress={() => {
+          props.setarAviso(true)
+        }}
+        style={estilos.conteiner}
+      >
+        <Icon style={estilos.icone} name="times-circle" size={35} color="black" />
+        <Text style={estilos.cancelar}>CANCELAR RESERVA</Text>
+      </TouchableOpacity >
+
+    </View>
   </View>
+
 
 );
 
@@ -74,7 +80,7 @@ const estilos = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#bfbfbf',
     borderRadius: 5,
-    
+
   },
   icone: {
     marginLeft: 10,
@@ -83,6 +89,13 @@ const estilos = StyleSheet.create({
 
 });
 
+const mapearEstadosPropriedades = (estado) => {
+  return ({
+    aviso: estado.avisoExcluir,
+  })
+
+}
+
 //export default CartaoMinhasReservas;
-export default connect(null, { excluirReserva })(CartaoMinhasReservas)
+export default connect(mapearEstadosPropriedades, { excluirReserva, setarAviso })(CartaoMinhasReservas)
 

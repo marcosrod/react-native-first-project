@@ -53,6 +53,7 @@ const estilos = StyleSheet.create({
     borderRadius: 5,
     padding: 5,
     textAlign: "center",
+    backgroundColor: '#E5E5E5',
 
   },
   lotacao: {
@@ -64,6 +65,7 @@ const estilos = StyleSheet.create({
     borderRadius: 5,
     padding: 5,
     textAlign: "center",
+    backgroundColor: '#E5E5E5',
   }
 
 });

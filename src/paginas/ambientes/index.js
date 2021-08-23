@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { atualizaLista } from '../../acoes';
 import { useEffect } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 Icon.loadFont();
@@ -39,7 +38,9 @@ const Ambientes = props => {
 
                 </View>
             </ScrollView>
-                <Pressable style={estilo.icone}>
+                <Pressable style={estilo.icone} onPress={() => {
+                    props.navigation.navigate('Novo Ambiente')
+                }}>
                     <Icon name="plus" size={20} color="black" />
                 </Pressable>
         </View>
@@ -62,7 +63,7 @@ const estilo = StyleSheet.create({
         height: '100%'
     },
     subconteiner: {
-        height: Dimensions.get("window").height + 60,
+        height: Dimensions.get("window").height + 120,
 
     },
     lista: {

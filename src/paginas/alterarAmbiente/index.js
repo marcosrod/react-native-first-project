@@ -2,6 +2,9 @@ import * as React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { setarCampoAmbienteAlt, alterarAmbiente } from '../../acoes/acoesAmbienteAlterar'
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+Icon.loadFont();
 
 
 const AlterarAmbiente = ({ ambiente, setarCampoAmbienteAlt, alterarAmbiente, navigation }) => {
@@ -21,7 +24,8 @@ const AlterarAmbiente = ({ ambiente, setarCampoAmbienteAlt, alterarAmbiente, nav
                         navigation.goBack()
                     }}
                     >
-                    <Text style={estilo.textoBotao}>Confirmar Alteração</Text></TouchableOpacity>
+                    <Icon name= "check" size={40} color="black" />
+                    <Text style={estilo.textoBotao}>CONFIRMAR ALTERAÇÃO</Text></TouchableOpacity>
             </View>
         </View>
     )
@@ -59,14 +63,16 @@ const estilo = StyleSheet.create({
         borderColor: '#707070',
         borderWidth: 1,
         width: 333,
-        height: 50,
+        height: 60,
         padding: 10,
-        marginTop: -15,
+        marginTop: -20,
+        flexDirection: 'row'
     },
     textoBotao: {
         fontSize: 20,
         color: 'black',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginLeft: 20
     },
     imagem: {
         width: 170,

@@ -3,7 +3,9 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 
 import CabecalhoNavegacao from '../../componentes/cabecalhoNavegacao';
 import { setarCampoAmbiente, salvarAmbiente } from '../../acoes/acoesAmbienteCadastro'
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
+Icon.loadFont();
 
 const NovoAmbiente = ({ ambienteCad, setarCampoAmbiente, salvarAmbiente, navigation}) => (
 
@@ -21,7 +23,8 @@ const NovoAmbiente = ({ ambienteCad, setarCampoAmbiente, salvarAmbiente, navigat
                     await salvarAmbiente(ambienteCad)
                     navigation.goBack()
                 }}>
-                <Text style={estilo.textoBotao} >Confirmar Cadastro</Text>
+                <Icon name= "check" size={40} color="black" />
+                <Text style={estilo.textoBotao} >CONFIRMAR CADASTRO</Text>
             </TouchableOpacity>
         </View>
     </View>
@@ -59,14 +62,16 @@ const estilo = StyleSheet.create({
         alignSelf: 'center',
         borderColor: 'black',
         width: 333,
-        height: 50,
+        height: 60,
         padding: 10,
         marginTop: -15,
+        flexDirection: 'row'
     },
     textoBotao: {
         fontSize: 20,
         color: 'black',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginLeft: 20
     },
     textoBotaoFoto: {
         fontSize: 15,

@@ -35,10 +35,11 @@ const estilos = StyleSheet.create({
     backgroundColor: "#FFF",
     justifyContent: 'center',
     alignItems: "center",
+    backgroundColor: '#E5E5E5',
   },
   imagem_perfil: {
     resizeMode: 'cover',
-    height: 80,
+    height: 120,
     borderRadius: 5,
     flex: 1,
   },

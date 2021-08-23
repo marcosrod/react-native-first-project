@@ -21,10 +21,10 @@ const CartaoReservarAmbiente = ({ ambiente, navegando }) => (
 
 const estilos = StyleSheet.create({
   conteiner: {
-    flex: 1
+    flex: 1,
+    
   },
   cartao: {
-    flex: 1,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#bfbfbf',
@@ -35,17 +35,17 @@ const estilos = StyleSheet.create({
     backgroundColor: "#FFF",
     justifyContent: 'center',
     alignItems: "center",
+    
   },
   imagem_perfil: {
     resizeMode: 'cover',
-    height: 80,
+    height: 120,
     borderRadius: 5,
-    flex: 1,
   },
   titulo: {
-    flex: 2,
     marginLeft: 10,
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 'bold',
   }
 
 });

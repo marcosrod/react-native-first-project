@@ -4,6 +4,9 @@ import CartaoDetalhesAmbiente from '../../componentes/formatadores/CartaoDetalhe
 import { setarCamposAmbiente, setarAviso } from '../../acoes';
 import { connect } from 'react-redux';
 import AvisoExcluir from '../../componentes/formatadores/avisoExcluir';
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+Icon.loadFont();
 
 function DetalhesAmbiente(props) {
     
@@ -19,17 +22,21 @@ function DetalhesAmbiente(props) {
             <CartaoDetalhesAmbiente ambiente={props.ambienteDetalhes} />
             <View style={estilos.conteinerBotao}>
                 <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas', ambiente.id)}>
-                    <Text style={estilos.texto} >Visualizar Reservas</Text>
+                    <Icon name= "eye" size={40} color="black" />
+                    <Text style={estilos.texto} >VISUALIZAR RESERVAS</Text>
                 </Pressable>
                 <Pressable style={estilos.botao} onPress={() => {
                     props.navigation.navigate('Alterar Ambiente')
                     }}>
-                    <Text style={estilos.texto}>Alterar Ambiente</Text>
+                    <Icon name= "pencil-square-o" size={40} color="black" />
+                    <Text style={estilos.texto}>ALTERAR AMBIENTE</Text>
                 </Pressable>
                 <Pressable 
                     style={estilos.botao}
                     onPress={() => props.setarAviso(true)}
-                ><Text style={estilos.texto}>Deletar Ambiente</Text>
+                >
+                <Icon name= "minus-circle" size={40} color="black" />
+                <Text style={estilos.texto}>DELETAR AMBIENTE</Text>
                 </Pressable>
             </View>
         </View>
@@ -46,17 +53,18 @@ const estilos = StyleSheet.create({
     botao: {
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 10,
-        elevation: 3,
-        backgroundColor: 'white',
-        height: '20%',
-        width: '75%'
+        borderRadius: 5,
+        backgroundColor: '#E5E5E5',
+        height: 60,
+        width: '75%',
+        flexDirection: 'row',
     },
     texto: {
-        fontSize: 16,
-        lineHeight: 21,
-        letterSpacing: 0.25,
+        fontSize: 20,
         color: 'black',
+        marginLeft: 20,
+        
+        
     },
     imagem_perfil: {
         resizeMode: 'cover',

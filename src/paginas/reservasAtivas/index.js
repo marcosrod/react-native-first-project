@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
-import reservas from '../../../reservas.json'
 import CartaoReserva from '../../componentes/formatadores/CartaoReservas';
 import { connect } from 'react-redux';
 import { atualizaListaReservas } from '../../acoes';
