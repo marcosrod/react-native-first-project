@@ -7,6 +7,7 @@ import ambienteAlteracaoReducer from './ambienteAlteracaoReducer'
 import avisoExcluirReducer from "./avisoExcluirReducer";
 import reservaCadastroReducer from "./reservaCadastroReducer";
 import reservaListarReducer from "./reservaListarReducer";
+import minhasReservasReducer from "./minhasReservasReducer";
 
 
 
@@ -19,6 +20,7 @@ export default combineReducers({
     avisoExcluir: avisoExcluirReducer,
     reservaCad: reservaCadastroReducer,
     reservasLista: reservaListarReducer,
+    minhasReservasLista: minhasReservasReducer,
 
 });
 

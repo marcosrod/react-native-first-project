@@ -45,7 +45,7 @@ export default function RoteadorTelas(){
           <Stack.Screen name="Alterar Ambiente"component={AlterarAmbiente} options={ {headerStyle:{backgroundColor: '#212529'}, headerTintColor: 'white', headerTitleAlign: 'center'}}/>
           <Stack.Screen name="Nova Conta"component={NovaConta} options={ {headerShown: false} } />
           <Stack.Screen name="MenuMorador" component={MenuMorador} options={ {headerShown: false} } />
-          <Stack.Screen name="Reservar Ambiente" component={ReservarAmbiente} options={ {headerShown: false} } />
+          <Stack.Screen name="Reservar Ambiente" component={ReservarAmbiente} options={ {headerStyle:{backgroundColor: '#212529'}, headerTintColor: 'white', headerTitleAlign: 'center'}}/>
         </Stack.Navigator>
       </NavigationContainer>
    </>

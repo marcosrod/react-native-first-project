@@ -2,6 +2,8 @@ import {CADASTRO_SUCESSO_RESERVA, SETAR_CAMPO_RESERVA} from '../acoes'
 
 const ESTADO_INICIAL = {
     ambienteId: '',
+    ambienteFoto: '',
+    ambienteNome: '',
     data: '',
     nome: '',
     apartamento: '',

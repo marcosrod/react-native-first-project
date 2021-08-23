@@ -26,7 +26,7 @@ export const salvarAmbiente = ambiente => {
             .ref(`/ambientes/`)
             .push(ambiente)
 
-        dispatch(cadastroSucesso());
+        dispatch(cadastroSucessoAmbiente());
     }
 
 }

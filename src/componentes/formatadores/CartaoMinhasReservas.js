@@ -1,58 +1,88 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {excluirReserva} from '../../acoes'
+import {connect} from 'react-redux'
 
-const CartaoMinhasReservas = ({ ambiente, navegando }) => (
-  <TouchableOpacity 
-    onPress={navegando} 
-    style={estilos.conteiner}
-  >
-    <View style={estilos.cartao}>
-    <Image
+Icon.loadFont();
+
+const CartaoMinhasReservas = (props) => (
+
+  <View style={estilos.cartao}>
+    <View style={estilos.topoCartao}>
+      <Image
         style={estilos.foto}
         source={{
-          uri: ambiente.foto,
+          uri: props.reserva.ambienteFoto,
         }}
       />
-      <Text style={estilos.titulo}>{ `${ambiente.nome}`  }</Text>
-      <Text style={estilos.cancelar}>CANCELAR RESERVA</Text>
+      <Text style={estilos.titulo}>{props.reserva.ambienteNome}</Text>
     </View>
-  </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => {
+        props.excluirReserva(props.reserva)
+      }}
+      style={estilos.conteiner}
+    >
+      <Icon style={estilos.icone} name= "times-circle" size={35} color="black" />
+      <Text style={estilos.cancelar}>CANCELAR RESERVA</Text>
+    </TouchableOpacity >
+
+  </View>
 
 );
 
 const estilos = StyleSheet.create({
   conteiner: {
-    flex: 1
-  },
-  cartao: {
-    flex: 1,
     flexDirection: 'row',
+    backgroundColor: '#E5E5E5',
+    marginTop: 10,
+    height: 60,
+    alignItems: 'center',
+    borderRadius: 3,
     borderWidth: 1,
     borderColor: '#bfbfbf',
-    borderRadius: 5,
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10,
-    backgroundColor: "#FFF",
-    justifyContent: 'center',
-    alignItems: "center",
+  },
+  cartao: {
+    flexDirection: 'column',
+    marginTop: 20,
+    marginBottom: 5,
+    width: '90%',
+    alignSelf: 'center',
+
   },
   foto: {
     resizeMode: 'cover',
-    height: 80,
+    height: 100,
+    width: '50%',
     borderRadius: 5,
-    flex: 1,
   },
   titulo: {
-    flex: 2,
     marginLeft: 10,
-    fontSize: 20
+    fontSize: 20,
+    width: '45%'
   },
   cancelar: {
-
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginLeft: 40
+  },
+  topoCartao: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#E5E5E5',
+    borderWidth: 1,
+    borderColor: '#bfbfbf',
+    borderRadius: 5,
+    
+  },
+  icone: {
+    marginLeft: 10,
+    marginRight: 15,
   }
 
 });
 
-export default CartaoMinhasReservas;
+//export default CartaoMinhasReservas;
+export default connect(null, { excluirReserva })(CartaoMinhasReservas)
 

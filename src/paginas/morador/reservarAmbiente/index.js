@@ -20,6 +20,8 @@ const ReservarAmbiente = (props) => {
                 <TextInput style={estilo.texto} placeholder="Data da Reserva" value={props.reserva.data} onChangeText={valor => {
                         props.setarCampoReserva('data', valor)
                         props.setarCampoReserva('ambienteId', props.route.params.ambiente.id)
+                        props.setarCampoReserva('ambienteFoto', props.route.params.ambiente.foto)
+                        props.setarCampoReserva('ambienteNome', props.route.params.ambiente.nome)
                     }} ></TextInput>
 
                 <TouchableOpacity
