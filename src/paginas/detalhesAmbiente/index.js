@@ -15,7 +15,7 @@ function DetalhesAmbiente(props) {
     
     return (
         <View style={estilos.conteiner}>
-            <AvisoExcluir aviso={props.aviso} setarAviso={props.setarAviso}/>
+            <AvisoExcluir aviso={props.aviso} setarAviso={props.setarAviso} ambiente={ambiente} navigation={props.navigation}/>
             <CartaoDetalhesAmbiente ambiente={props.ambienteDetalhes} />
             <View style={estilos.conteinerBotao}>
                 <Pressable style={estilos.botao} onPress={() => props.navigation.navigate('Reservas Ativas')}>
@@ -35,11 +35,6 @@ function DetalhesAmbiente(props) {
         </View>
     )
 }
-
-
-// onPress={() => Alert.alert('Confirmar Exclusão de Ambiente?', 'Esta ação não pode ser desfeita!', 
-//                     [{text: 'Sim', onPress: () => {}}, 
-//                     {text: 'Não', onPress: () => {}}])}>
 
 const estilos = StyleSheet.create({
     conteiner: {
@@ -89,7 +84,7 @@ const mapStateToProps = (estado) => {
 
 const mapDispatchToProps = {
     setarCamposAmbiente,
-    setarAviso
+    setarAviso,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetalhesAmbiente);

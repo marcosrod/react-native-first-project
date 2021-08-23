@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from 'react-native';
-import { setarAviso } from '../../acoes';
+import { excluirAmbiente, setarAviso } from '../../acoes';
 import { connect } from 'react-redux';
 
+
 import Icon from 'react-native-vector-icons/FontAwesome';
+import detalhesAmbiente from '../../paginas/detalhesAmbiente';
 
 Icon.loadFont();
 
-const AvisoExcluir = (props) => {
-
+const AvisoExcluir = (props, {ambiente}) => {
     return (
         <Modal
             visible={props.aviso}
@@ -20,7 +21,11 @@ const AvisoExcluir = (props) => {
                     <Text style={estilos.texto1}> Confirmar Exclusão de Ambiente?</Text>
                     <Text style={estilos.texto2}> Esta ação não pode ser desfeita!</Text>
                     <View style={estilos.icones}>
-                        <TouchableOpacity style={estilos.sim} onPress={() => props.setarAviso(false)}>
+                        <TouchableOpacity style={estilos.sim} onPress={async () => {
+                                props.setarAviso(false)
+                                props.excluirAmbiente(props.ambiente)
+                                props.navigation.goBack()
+                        }}>
                             <Text style={estilos.simT}>SIM</Text>
                             <Icon name="check-circle" size={30} color="black" />
                         </TouchableOpacity>
@@ -99,4 +104,6 @@ const estilos = StyleSheet.create({
 
 })
 
-export default AvisoExcluir;
+//export default AvisoExcluir;
+
+export default connect(null, {excluirAmbiente})(AvisoExcluir);

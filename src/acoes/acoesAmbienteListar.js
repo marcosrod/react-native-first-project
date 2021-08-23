@@ -19,3 +19,13 @@ export const atualizaLista = () => {
             })
     }
 }
+
+export const excluirAmbiente = ambiente => {
+  
+    return async dispatch => {
+        await firebase
+        .database()
+          .ref(`/ambientes/${ambiente.id}`)
+          .remove();
+    }
+}
